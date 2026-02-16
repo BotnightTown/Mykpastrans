@@ -15,7 +15,6 @@ function HeaderDesktop() {
         <ul className="flex gap-8 list-none">
         <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-blue-500 transition-all">Маршрути</a></li>
         <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-blue-500 transition-all">Розклад</a></li>
-        <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-blue-500 transition-all">Тарифи</a></li>
         <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-blue-500 transition-all">Новини</a></li>
         <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-blue-500 transition-all">Контакти</a></li>
         </ul>
