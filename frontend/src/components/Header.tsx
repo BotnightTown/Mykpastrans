@@ -14,9 +14,22 @@ function HeaderDesktop() {
 
       <nav className="hidden md:block">
         <ul className="flex gap-8 list-none">
-          <HeaderLink href="#" title="Маршрути" />
-          <HeaderLink href="#" title="Розклад" />
           <HeaderLink href="#" title="Новини" />
+          <HeaderLink
+            title="Пасажирам"
+            items={[
+              { href: "/passengers/schedule", title: "Розклад" },
+              { href: "/passengers/payment", title: "Способи оплати" },
+              { href: "/passengers/stops", title: "Зупинки" },
+            ]}
+          />
+          <HeaderLink
+            title="Про нас" 
+            items={[
+              { href: "/about/history", title: "Історія підприємства" },
+              { href: "/about/rolling-stock", title: "Рухомий склад" }
+            ]}
+          />
           <HeaderLink href="/contacts" title="Контакти" />
         </ul>
       </nav>
