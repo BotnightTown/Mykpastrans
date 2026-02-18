@@ -1,5 +1,6 @@
 import Link from "next/dist/client/link"
 import Image from "next/image"
+import HeaderLink from "./ui/HeaderLink"
 
 function HeaderDesktop() {
   return (
@@ -13,10 +14,10 @@ function HeaderDesktop() {
 
       <nav className="hidden md:block">
         <ul className="flex gap-8 list-none">
-        <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-(--primary-blue) transition-all">Маршрути</a></li>
-        <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-(--primary-blue) transition-all">Розклад</a></li>
-        <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-(--primary-blue) transition-all">Новини</a></li>
-        <li><a href="#" className="no-underline text-gray-900 font-semibold uppercase text-base hover:text-(--primary-blue) transition-all">Контакти</a></li>
+          <HeaderLink href="#" title="Маршрути" />
+          <HeaderLink href="#" title="Розклад" />
+          <HeaderLink href="#" title="Новини" />
+          <HeaderLink href="/contacts" title="Контакти" />
         </ul>
       </nav>
       </div>
