@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/dist/client/link";
 import Image from "next/image";
 import HeaderLink from "./ui/HeaderLink";
