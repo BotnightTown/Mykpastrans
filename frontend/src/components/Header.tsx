@@ -49,11 +49,11 @@ function HeaderDesktop() {
 }
 
 function HeaderMobile() {
-  return <header></header>;
+  return <header>123</header>;
 }
 
 export default function Header() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
 
-  isSmallDevice ? <HeaderDesktop /> : <HeaderMobile />;
+  return isSmallDevice ? <HeaderMobile /> : <HeaderDesktop />;
 }
