@@ -82,7 +82,7 @@ export function ContactsForm() {
   };
 
   return (
-    <div>
+    <div id="feedback">
       <h2 className="text-2xl font-black uppercase border-b-2 border-(--accent-pink) inline-block mb-8">
         Написати звернення
       </h2>
