@@ -16,8 +16,8 @@ export default function NewsCard({image, date, title, description}: NewsCardType
         />
         <div className="p-6">
           <p className="text-gray-600 text-sm mb-2">{date}</p>
-          <h3 className="text-(--primary-blue) font-semibold mb-4">{title}</h3>
-          <p className="text-gray-700 truncate">{description}</p>
+          <h3 className="text-(--primary-blue) font-semibold mb-4 text-lg md:text-xl">{title}</h3>
+          <p className="text-gray-700 text-sm md:text-base line-clamp-2">{description}</p>
         </div>
       </article>
     </Link>
