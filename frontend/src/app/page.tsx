@@ -3,6 +3,7 @@ import NewsCard from "@/components/NewsCard";
 import RouteShortInfo from "@/components/ui/RouteShortInfo";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -12,15 +13,15 @@ export default function Home() {
           <h1 className="text-5xl font-black text-white text-center drop-shadow-lg">КП «Миколаївпастранс»</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl text-black">
-            <a href="#" className="bg-white p-10 rounded border-b-4 border-(--primary-blue) shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+            <Link href="/schedule" className="bg-white p-10 rounded border-b-4 border-(--primary-blue) shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
               <h3 className="text-xl font-black text-(--primary-blue) uppercase mb-4">Розклад руху</h3>
               <p>Актуальні графіки та детальні маршрути всіх міських маршрутів.</p>
-            </a>
-            <a href="#" className="bg-white p-10 rounded border-b-4 border-(--accent-pink) shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+            </Link>
+            <Link href="/news" className="bg-white p-10 rounded border-b-4 border-(--accent-pink) shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
               <h3 className="text-xl font-black text-(--primary-blue) uppercase mb-4">Новини</h3>
               <p>Останні новини та оновлення від КП «Миколаївпастранс».</p>
-            </a>
-            <a href="#" className="bg-white p-10 rounded border-b-4 border-(--primary-blue) shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+            </Link>
+            <a href="https://www.eway.in.ua/ua/cities/mykolaiv/routes" className="bg-white p-10 rounded border-b-4 border-(--primary-blue) shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
               <h3 className="text-xl font-black text-(--primary-blue) uppercase mb-4">Моніторинг</h3>
               <p>Відстежуйте рух автобусів у реальному часі на мапі міста.</p>
             </a>
@@ -28,7 +29,7 @@ export default function Home() {
         </div>
       </Carousel>
       <div className="w-full h-max flex flex-col items-center gap-24 px-8 py-24">
-        <section className="max-w-6xl w-full">
+        <section className="max-w-6xl w-full flex flex-col gap-8">
           <SectionTitle title="Наші маршрути" />
           <div className="overflow-x-auto">
             <ul className="w-full border-collapse text-lg list-none">
@@ -64,7 +65,7 @@ export default function Home() {
             </ul>
           </div>
         </section>
-        <section className="max-w-6xl mx-auto">
+        <section className="max-w-6xl mx-auto flex flex-col gap-8">
           <SectionTitle title="Новини та оголошення" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <NewsCard 
