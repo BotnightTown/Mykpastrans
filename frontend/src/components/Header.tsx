@@ -1,10 +1,6 @@
-'use client'; 
-import { useState } from 'react';
-import Link from "next/link";
-import Image from "next/image";
-
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+import Link from "next/dist/client/link"
+import Image from "next/image"
+import HeaderLink from "./ui/HeaderLink"
 
   return (
     <header className="bg-white border-b-4 border-(--primary-blue) sticky top-0 z-50 py-3 md:py-4 px-4 md:px-[5%]">
@@ -34,12 +30,25 @@ export default function Header() {
         </button>
       </div>
 
-      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl`}>
-        <ul className="flex flex-col list-none p-4 m-0 gap-4">
-          <li><a href="#" className="block no-underline text-gray-900 font-bold uppercase text-center p-2 border-b border-gray-50">Маршрути</a></li>
-          <li><a href="#" className="block no-underline text-gray-900 font-bold uppercase text-center p-2 border-b border-gray-50">Розклад</a></li>
-          <li><a href="#" className="block no-underline text-gray-900 font-bold uppercase text-center p-2 border-b border-gray-50">Новини</a></li>
-          <li><a href="#" className="block no-underline text-gray-900 font-bold uppercase text-center p-2 border-b border-gray-50">Контакти</a></li>
+      <nav className="hidden md:block">
+        <ul className="flex gap-8 list-none">
+          <HeaderLink href="#" title="Новини" />
+          <HeaderLink
+            title="Пасажирам"
+            items={[
+              { href: "/passengers/schedule", title: "Розклад" },
+              { href: "/passengers/payment", title: "Способи оплати" },
+              { href: "/passengers/stops", title: "Зупинки" },
+            ]}
+          />
+          <HeaderLink
+            title="Про нас" 
+            items={[
+              { href: "/about/history", title: "Історія підприємства" },
+              { href: "/about/rolling-stock", title: "Рухомий склад" }
+            ]}
+          />
+          <HeaderLink href="/contacts" title="Контакти" />
         </ul>
       </div>
     </header>
