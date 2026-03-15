@@ -4,17 +4,17 @@ import { ContactsForm } from "./ContactsForm";
 import MapWrapper from "./MapWrapper";
 
 export const metadata: Metadata = {
-  title: 'Контакти - «Миколаївпастранс»',
-  description: 'Знайдіть контактну інформацію комунального підприємства Миколаївської міської ради «Миколаївпастранс», включаючи телефон, адресу та електронну пошту для зв\'язку.',
-}
+  title: "Контакти - «Миколаївпастранс»",
+  description:
+    "Знайдіть контактну інформацію комунального підприємства Миколаївської міської ради «Миколаївпастранс», включаючи телефон, адресу та електронну пошту для зв'язку.",
+};
 
 export default function ContactsPage() {
-
   return (
     <main className="bg-white text-[#333]">
       <section className="bg-[#f4f4f4] px-[5%] py-12 border-b border-[#dddddd]">
         <div className="max-w-350 mx-auto">
-          <SectionTitle title="Контакти"/>
+          <SectionTitle title="Контакти" />
         </div>
       </section>
 
@@ -26,7 +26,9 @@ export default function ContactsPage() {
             </h2>
 
             <div className="mb-8">
-              <h3 className="text-sm text-[#666] uppercase mb-2">Гаряча лінія (скарги та пропозиції)</h3>
+              <h3 className="text-sm text-[#666] uppercase mb-2">
+                Гаряча лінія (скарги та пропозиції)
+              </h3>
               <p>
                 <a
                   href="tel:0507680483"
@@ -35,23 +37,33 @@ export default function ContactsPage() {
                   050 768-04-83
                 </a>
               </p>
-              <p className="text-sm text-[#666] mt-2">Дзвінки безкоштовні, Пн-Пт: 08:00 - 17:00</p>
+              <p className="text-sm text-[#666] mt-2">
+                Дзвінки безкоштовні, Пн-Пт: 08:00 - 17:00
+              </p>
             </div>
 
             <div className="mb-8">
-              <h3 className="text-sm text-[#666] uppercase mb-2">Адреса офісу</h3>
-              <p className="text-xl font-semibold">54000, м. Миколаїв, пр. Миру 17г</p>
+              <h3 className="text-sm text-[#666] uppercase mb-2">
+                Адреса офісу
+              </h3>
+              <p className="text-xl font-semibold">
+                54000, м. Миколаїв, вул. Новозаводська 7
+              </p>
             </div>
 
             <div className="mb-8">
-              <h3 className="text-sm text-[#666] uppercase mb-2">Електронна пошта</h3>
+              <h3 className="text-sm text-[#666] uppercase mb-2">
+                Електронна пошта
+              </h3>
               <p>
-                <a href="mailto:mykolaivpastrans@gmail.com" className="text-xl font-semibold no-underline">
+                <a
+                  href="mailto:mykolaivpastrans@gmail.com"
+                  className="text-xl font-semibold no-underline"
+                >
                   mykolaivpastrans@gmail.com
                 </a>
               </p>
             </div>
-
           </div>
 
           <div>
