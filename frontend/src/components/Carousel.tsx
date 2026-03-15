@@ -22,7 +22,7 @@ export default function Carousel({ children }: CarouselProps) {
   }, [slides.length]);
 
   return (
-    <div className="relative w-full h-200 md:h-125 overflow-hidden">
+    <div className="relative w-full h-[60vh] md:h-[80vh] lg:h-screen overflow-hidden">
       <div className="relative w-full h-full">
         {slides.map((slide, idx) => (
           <div

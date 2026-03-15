@@ -27,18 +27,21 @@ export default function Home() {
             </a>
           </div>
         </div>
+      </div>
       </Carousel>
       <div className="w-full h-max flex flex-col items-center gap-24 px-8 py-24">
         <section className="max-w-6xl w-full flex flex-col gap-8">
           <SectionTitle title="Наші маршрути" />
-          <div className="overflow-x-auto">
-            <ul className="w-full border-collapse text-lg list-none">
-              <li className="flex bg-gray-100">
-                <div className="w-1/6 text-left p-4 border-b-2 border-(--primary-blue)">Маршрут</div>
-                <div className="w-2/6 text-left p-4 border-b-2 border-(--primary-blue)">Напрямок</div>
-                <div className="w-2/6 text-left p-4 border-b-2 border-(--primary-blue)">Інтервал руху</div>
-                <div className="w-1/6 text-left p-4 border-b-2 border-(--primary-blue)">Розклад</div>
+          <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+            <ul className="w-full text-lg list-none p-0 m-0">
+              
+              <li className="hidden md:flex bg-gray-50 font-bold uppercase text-xs tracking-wider text-gray-500">
+                <div className="w-1/6 p-4 border-b-2 border-(--primary-blue)">Маршрут</div>
+                <div className="w-2/6 p-4 border-b-2 border-(--primary-blue)">Напрямок</div>
+                <div className="w-2/6 p-4 border-b-2 border-(--primary-blue)">Інтервал руху</div>
+                <div className="w-1/6 p-4 border-b-2 border-(--primary-blue) text-right">Розклад</div>
               </li>
+
               <RouteShortInfo 
                 routeNumber="1" 
                 routeName="Тернівка — «Океан»" 
@@ -67,7 +70,7 @@ export default function Home() {
         </section>
         <section className="max-w-6xl mx-auto flex flex-col gap-8">
           <SectionTitle title="Новини та оголошення" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <NewsCard 
               image="/carousel/00199874.jpg"
               date="13 Лютого, 2026"
