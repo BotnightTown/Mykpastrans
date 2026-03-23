@@ -1,21 +1,37 @@
+export interface BusTrip {
+  id: number;
+  time: string;
+  note?: string;
+  is_short?: boolean;
+}
+
+export interface BusDirection {
+  id: number;
+  endpoint_name: string;
+  trips: BusTrip[];
+}
+
 export interface Route {
   id: number;
   number: string;
-  name: string;
+  title: string;
+  schedule: BusDirection[];
 }
 
-export interface Stop {
+// Strapi response wrappers
+export interface StrapiItem<T> {
   id: number;
-  name: string;
-}
-
-export interface Schedule {
-  id: number;
-  time: string;
-  route: Route;
-  stop: Stop;
+  attributes: T;
 }
 
 export interface StrapiResponse<T> {
-  data: T[];
+  data: StrapiItem<T>[];
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
 }
