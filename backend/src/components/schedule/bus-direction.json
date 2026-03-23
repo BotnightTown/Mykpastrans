@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_schedule_bus_directions",
+  "info": {
+    "displayName": "bus.direction"
+  },
+  "options": {},
+  "attributes": {
+    "endpoint_name": {
+      "type": "string"
+    },
+    "trips": {
+      "type": "component",
+      "component": "schedule.bus-trip",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

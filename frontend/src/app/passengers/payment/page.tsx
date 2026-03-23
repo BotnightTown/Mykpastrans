@@ -26,7 +26,7 @@ export default function PaymentPage() {
         </div>
       </section>
 
-      <section className="px-[5%] py-16">
+      <section className="px-[5%] py-16" id="tariffs">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
           <article className="bg-white border border-[#e4e4e4] shadow-sm p-8">
             <h2 className="text-2xl font-black uppercase border-b-2 border-(--primary-blue) inline-block mb-6">
@@ -59,14 +59,18 @@ export default function PaymentPage() {
               Оплата банківською карткою
             </h2>
             <p className="text-lg leading-relaxed mb-4">
-              Прикладіть банківську картку або смартфон з NFC до терміналу водія.
+              Прикладіть банківську картку або смартфон з NFC до терміналу
+              водія.
             </p>
             <p className="text-base text-[#666] mb-6">
-              Після успішної транзакції водій зобов'язаний видати квиток, що підтверджує оплату.
+              Після успішної транзакції водій зобов'язаний видати квиток, що
+              підтверджує оплату.
             </p>
 
             <div className="bg-[#f8f9fa] border-l-4 border-(--primary-blue) p-4">
-              <p className="text-sm uppercase text-[#666]">Вартість разового проїзду</p>
+              <p className="text-sm uppercase text-[#666]">
+                Вартість разового проїзду
+              </p>
               <p className="text-4xl font-black text-(--primary-blue) leading-none mt-2">
                 15 грн
               </p>
@@ -75,14 +79,14 @@ export default function PaymentPage() {
         </div>
       </section>
 
-      <section className="px-[5%] pb-20">
+      <section className="px-[5%] pb-20" id="privilege">
         <div className="max-w-6xl mx-auto bg-[#f8f9fa] border border-[#e4e4e4] p-8">
           <h2 className="text-2xl font-black uppercase border-b-2 border-(--primary-blue) inline-block mb-6">
             Пільговий проїзд
           </h2>
           <p className="text-base text-[#666] mb-5">
-            Право пільгового проїзду надається згідно з чинним законодавством України
-            та за наявності оригіналу документів.
+            Право пільгового проїзду надається згідно з чинним законодавством
+            України та за наявності оригіналу документів.
           </p>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 list-none m-0 p-0">
             {benefitsList.map((item) => (

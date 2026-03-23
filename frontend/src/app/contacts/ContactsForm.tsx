@@ -10,6 +10,11 @@ export function ContactsForm() {
   const [subject, setSubject] = useState<string>("Запит про розклад");
   const [description, setDescription] = useState<string>("");
 
+  const [message, setMessage] = useState<string>("");
+  const [messageType, setMessageType] = useState<"success" | "error" | null>(
+    null,
+  );
+
   const handleInputPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value;
 
@@ -67,15 +72,17 @@ export function ContactsForm() {
       setEmail("");
       setSubject("");
       setDescription("");
-      alert("Звернення надіслано успішно!");
+      setMessageType("success");
+      setMessage("Звернення надіслано успішно!");
     } catch (error) {
       console.log(error);
-      alert("Помилка при надсиланні звернення");
+      setMessageType("error");
+      setMessage("Помилка при надсиланні звернення.");
     }
   };
 
   return (
-    <div>
+    <div id="feedback">
       <h2 className="text-2xl font-black uppercase border-b-2 border-(--accent-pink) inline-block mb-8">
         Написати звернення
       </h2>
@@ -163,7 +170,17 @@ export function ContactsForm() {
             className="w-full px-3 py-3 border border-[#dddddd] rounded-xs text-base outline-none resize-y focus:border-(--primary-blue) focus:ring-2 focus:ring-[rgba(14,149,247,0.12)]"
           />
         </div>
-
+        {message && (
+          <p
+            className={`p-3 rounded text-sm font-semibold ${
+              messageType === "success"
+                ? "bg-green-100 text-green-700 border border-green-300"
+                : "bg-red-100 text-red-700 border border-red-300"
+            }`}
+          >
+            {message}
+          </p>
+        )}
         <button
           type="button"
           className="w-full bg-(--primary-blue) hover:bg-[#0b7ac9] text-white border-none py-4 px-8 font-bold uppercase cursor-pointer transition-colors"
