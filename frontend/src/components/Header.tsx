@@ -6,9 +6,8 @@ import HeaderLink from "./ui/HeaderLink";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 
-function HeaderDesktop() {
   return (
-    <header className="bg-white border-b-4 border-(--primary-blue) sticky top-0 z-1000 py-4 px-[5%]">
+    <header className="bg-white border-b-4 border-(--primary-blue) sticky top-0 z-50 py-3 md:py-4 px-4 md:px-[5%]">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         <Link
           href="/"

@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-[#1a1a1a] text-white p-[4rem_5%_2rem]">
-      <div className="max-w-325 mx-auto grid grid-cols-4 gap-12 mb-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
         <div className="footer-col">
           <h2 className="text-[#0e95f7] mb-4 text-2xl font-bold">
             Миколаївпастранс
@@ -115,7 +115,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="max-w-325 mx-auto pt-8 border-t border-[#333] flex justify-between text-xs text-[#666]">
+      <div className="max-w-7xl mx-auto pt-8 border-t border-[#333] flex flex-col md:flex-row gap-4 md:justify-between text-xs text-[#666] text-center md:text-left">
         <p>&copy; 2026 КП "Миколаївпастранс". Всі права захищені.</p>
         <p>Офіційний веб-ресурс міста Миколаїв</p>
       </div>
