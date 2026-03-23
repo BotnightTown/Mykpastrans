@@ -12,37 +12,61 @@ export default function ScheduleTable({
   direction,
 }: Props) {
   const route = routes.find((r) => r.number === routeNumber);
-  const directionData = route?.schedule.find(
-    (d) => d.endpoint_name === direction,
+  const scheduleIndex = direction === "Туди" ? 0 : 1;
+  const directionData = route?.schedule[scheduleIndex];
+  const trips = [...(directionData?.trips ?? [])].sort((a, b) =>
+    a.time.localeCompare(b.time),
   );
-  const trips = directionData?.trips ?? [];
 
   return (
     <div>
-      <table className="w-full table-auto border-collapse text-center">
-        <thead className="bg-gray-100">
+      {directionData && (
+        <div className="mb-3 text-2xl font-bold text-center">
+          <span className="text-[#e65e92]">{directionData.endpoint_name}</span>
+        </div>
+      )}
+
+      <table className="border-separate border-spacing-1 border border-(--primary-blue) w-full table-auto bg-(--primary-blue)">
+        <thead>
           <tr>
-            <th className="border p-2 text-sm font-semibold">№</th>
-            <th className="border p-2 text-sm font-semibold">Час</th>
-            <th className="border p-2 text-sm font-semibold">Примітка</th>
-            <th className="border p-2 text-sm font-semibold">Короткий</th>
+            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
+              №
+            </th>
+            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
+              Час
+            </th>
+            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
+              Примітка
+            </th>
+            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
+              Короткий
+            </th>
           </tr>
         </thead>
 
         <tbody>
           {trips.length === 0 ? (
             <tr>
-              <td colSpan={4} className="border p-4 text-gray-400">
+              <td
+                colSpan={4}
+                className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white text-center text-gray-400"
+              >
                 Рейсів не знайдено
               </td>
             </tr>
           ) : (
             trips.map((trip, i) => (
-              <tr key={trip.id} className="transition-colors hover:bg-pink-100">
-                <td className="border p-2 text-sm font-medium">{i + 1}</td>
-                <td className="border p-2 text-sm">{trip.time}</td>
-                <td className="border p-2 text-sm">{trip.note ?? "—"}</td>
-                <td className="border p-2 text-sm">
+              <tr key={trip.id}>
+                <td className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white">
+                  {i + 1}
+                </td>
+                <td className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white">
+                  {trip.time}
+                </td>
+                <td className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white">
+                  {trip.note ?? "—"}
+                </td>
+                <td className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white">
                   {trip.is_short ? "Так" : "Ні"}
                 </td>
               </tr>
