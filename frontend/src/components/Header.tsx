@@ -25,7 +25,7 @@ function HeaderDesktop() {
 
         <nav className="hidden md:block">
           <ul className="flex gap-8 list-none">
-            <HeaderLink href="#" title="Новини" />
+            <HeaderLink href="/news" title="Новини" />
             <HeaderLink
               title="Пасажирам"
               items={[
