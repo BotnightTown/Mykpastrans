@@ -16,7 +16,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl text-black">
             <Link
-              href="/schedule"
+              href="/passengers/schedule"
               className="bg-white p-10 rounded border-b-4 border-(--primary-blue) shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
             >
               <h3 className="text-xl font-black text-(--primary-blue) uppercase mb-4">

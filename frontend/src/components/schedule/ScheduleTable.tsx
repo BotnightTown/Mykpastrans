@@ -4,16 +4,32 @@ interface Props {
   routeNumber: string;
   routes: Route[];
   direction: "Туди" | "Назад";
+  dayFilter: string;
 }
 
 export default function ScheduleTable({
   routeNumber,
   routes,
   direction,
+  dayFilter,
 }: Props) {
   const route = routes.find((r) => r.number === routeNumber);
+  const isWeekendFilter = dayFilter === "Вихідні та святкові дні";
+
+  const filteredSchedule = (() => {
+    const filtered =
+      route?.schedule.filter((dir) => dir.isWeekend === isWeekendFilter) ?? [];
+
+    if (filtered.length === 0) {
+      return route?.schedule.filter((dir) => dir.isWeekend === false) ?? [];
+    }
+
+    return filtered;
+  })();
+
   const scheduleIndex = direction === "Туди" ? 0 : 1;
-  const directionData = route?.schedule[scheduleIndex];
+  const directionData = filteredSchedule[scheduleIndex];
+
   const trips = [...(directionData?.trips ?? [])].sort((a, b) =>
     a.time.localeCompare(b.time),
   );
@@ -49,7 +65,7 @@ export default function ScheduleTable({
             <tr>
               <td
                 colSpan={4}
-                className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white text-center text-gray-400"
+                className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white text-center text-gray-400"
               >
                 Рейсів не знайдено
               </td>
@@ -57,16 +73,16 @@ export default function ScheduleTable({
           ) : (
             trips.map((trip, i) => (
               <tr key={trip.id}>
-                <td className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white">
+                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
                   {i + 1}
                 </td>
-                <td className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white">
+                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
                   {trip.time}
                 </td>
-                <td className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white">
+                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
                   {trip.note ?? "—"}
                 </td>
-                <td className="border border-blue-400 px-2 py-1 text-xs md:text-sm bg-white">
+                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
                   {trip.is_short ? "Так" : "Ні"}
                 </td>
               </tr>

@@ -25,12 +25,16 @@ export default function SchedulePage() {
       console.log("Fetched routes:", data);
       setRoutes(data);
 
-      if (!selectedRoute && data.length > 0) {
-        setSelectedRoute(data[0].number);
-      }
+      const savedRoute = localStorage.getItem("selectedRoute") || "1";
+      setSelectedRoute(savedRoute);
     }
     fetchData();
   }, []);
+
+  const handleRouteSelect = (route: string) => {
+    setSelectedRoute(route);
+    localStorage.setItem("selectedRoute", route);
+  };
 
   if (!selectedRoute)
     return <div className="text-center mt-20 text-lg">Завантаження...</div>;
@@ -40,7 +44,7 @@ export default function SchedulePage() {
       <div className="md:w-28 w-full md:h-screen shrink-0">
         <RouteSidebar
           selectedRoute={selectedRoute}
-          onSelect={setSelectedRoute}
+          onSelect={handleRouteSelect}
           routes={routes}
         />
       </div>
@@ -68,6 +72,7 @@ export default function SchedulePage() {
             routeNumber={selectedRoute}
             routes={routes}
             direction={direction}
+            dayFilter={dayFilter}
           />
         </div>
       </div>

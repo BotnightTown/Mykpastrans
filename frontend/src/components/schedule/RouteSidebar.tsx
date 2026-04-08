@@ -28,7 +28,7 @@ export default function RouteSidebar({
             onClick={() => onSelect(route.number)}
             className={`shrink-0 px-4 py-2 rounded-lg font-semibold transition-colors duration-200 ${
               selectedRoute === route.number
-                ? "bg-blue-500 text-white"
+                ? "bg-(--primary-blue) text-white"
                 : "bg-white hover:bg-gray-200"
             }`}
           >
@@ -50,9 +50,9 @@ export default function RouteSidebar({
           <button
             key={route.id}
             onClick={() => onSelect(route.number)}
-            className={`p-3 rounded-lg font-semibold text-lg transition-colors duration-200 ${
+            className={`p-3 rounded-lg font-semibold text-lg transition-colors duration-200 cursor-pointer ${
               selectedRoute === route.number
-                ? "bg-blue-500 text-white"
+                ? "bg-(--primary-blue) text-white"
                 : "bg-white hover:bg-gray-200"
             }`}
           >

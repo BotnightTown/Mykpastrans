@@ -8,7 +8,9 @@ export default function DirectionSwitch({ direction, setDirection }: Props) {
     <div className="flex gap-2 my-4">
       <button
         className={`px-4 py-2 rounded font-semibold cursor-pointer ${
-          direction === "Туди" ? "bg-blue-600 text-white" : "bg-gray-200"
+          direction === "Туди"
+            ? "bg-(--primary-blue) text-white"
+            : "bg-gray-200"
         }`}
         onClick={() => setDirection("Туди")}
       >
@@ -16,7 +18,9 @@ export default function DirectionSwitch({ direction, setDirection }: Props) {
       </button>
       <button
         className={`px-4 py-2 rounded font-semibold cursor-pointer ${
-          direction === "Назад" ? "bg-blue-600 text-white" : "bg-gray-200"
+          direction === "Назад"
+            ? "bg-(--primary-blue) text-white"
+            : "bg-gray-200"
         }`}
         onClick={() => setDirection("Назад")}
       >
