@@ -21,6 +21,9 @@
       "type": "component",
       "component": "schedule.bus-direction",
       "repeatable": true
+    },
+    "intervalTime": {
+      "type": "string"
     }
   }
 }

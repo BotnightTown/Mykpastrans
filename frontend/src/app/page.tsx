@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getArticles } from "@/services/news.service";
 import { formatDate } from "@/utils/date";
 import { StrapiArticle } from "@/types/news.types";
+import ShortInfo from "@/components/schedule/ShortInfo";
 
 export default async function Home() {
   let latestNews: StrapiArticle[] = [];
@@ -64,7 +65,7 @@ export default async function Home() {
       <div className="w-full h-max flex flex-col items-center gap-24 px-8 py-24">
         <section className="max-w-6xl w-full flex flex-col gap-8">
           <SectionTitle title="Наші маршрути" />
-          <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+          {/* <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
             <ul className="w-full text-lg list-none p-0 m-0">
               <li className="hidden md:flex bg-gray-50 font-bold uppercase text-xs tracking-wider text-gray-500">
                 <div className="w-1/6 p-4 border-b-2 border-(--primary-blue)">
@@ -105,7 +106,8 @@ export default async function Home() {
                 href="#"
               />
             </ul>
-          </div>
+          </div> */}
+          <ShortInfo />
         </section>
 
         <section className="max-w-6xl w-full flex flex-col gap-8">
