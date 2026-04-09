@@ -17,5 +17,6 @@ export interface Route {
   documentId: string;
   number: string;
   title: string;
+  intervalTime: string;
   schedule: BusDirection[];
 }
