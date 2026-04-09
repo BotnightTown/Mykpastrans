@@ -19,14 +19,12 @@ export default function NewsPage() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  // Load categories once
   useEffect(() => {
     getCategories()
       .then((res) => setCategories(res.data ?? []))
       .catch(() => setCategories([]));
   }, []);
 
-  // Load articles when filters change
   const loadArticles = useCallback(async () => {
     setLoading(true);
     try {
@@ -49,7 +47,6 @@ export default function NewsPage() {
     loadArticles();
   }, [loadArticles]);
 
-  // Reset page when filters change
   useEffect(() => {
     setPage(1);
   }, [search, selectedCategory]);
@@ -61,17 +58,19 @@ export default function NewsPage() {
 
   return (
     <div className="w-full min-h-screen bg-(--light-bg)">
-      {/* Hero */}
-      <section className="bg-[#f4f4f4] px-[5%] py-12 border-b border-[#dddddd]">
+      <div className="bg-(--primary-blue) py-16 px-8">
         <div className="max-w-6xl mx-auto">
-          <SectionTitle title="Новини" />
+          <h1 className="text-4xl md:text-5xl font-black text-white uppercase mb-2">
+            Новини
+          </h1>
+          <p className="text-blue-100 text-lg">
+            Актуальні новини та оголошення КП «Миколаївпастранс»
+          </p>
         </div>
-      </section>
+      </div>
 
       <div className="max-w-6xl mx-auto px-8 py-12 flex flex-col gap-8">
-        {/* Filters */}
         <div className="flex flex-col md:flex-row gap-4">
-          {/* Search */}
           <form onSubmit={handleSearchSubmit} className="flex gap-2 flex-1">
             <input
               type="text"
@@ -100,7 +99,6 @@ export default function NewsPage() {
             )}
           </form>
 
-          {/* Category filter */}
           {categories.length > 0 && (
             <div className="flex gap-2 flex-wrap">
               <button
@@ -134,7 +132,6 @@ export default function NewsPage() {
           )}
         </div>
 
-        {/* Results info */}
         {pagination && !loading && (
           <p className="text-sm text-gray-500">
             Знайдено{" "}
@@ -154,7 +151,6 @@ export default function NewsPage() {
           </p>
         )}
 
-        {/* Articles grid */}
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {Array.from({ length: 6 }).map((_, i) => (
@@ -186,15 +182,15 @@ export default function NewsPage() {
                 key={article.id}
                 slug={article.slug}
                 image={article.cover?.url ?? null}
-                date={formatDate(article.publishedTime ?? article.publishedAt)}
+                date={formatDate(
+                  article.timePublishedAt ?? article.publishedAt,
+                )}
                 title={article.title}
-                description={article.excerpt}
               />
             ))}
           </div>
         )}
 
-        {/* Pagination */}
         {pagination && pagination.pageCount > 1 && (
           <div className="flex justify-center gap-2 mt-4">
             <button

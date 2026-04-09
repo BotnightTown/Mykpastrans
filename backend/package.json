@@ -12,14 +12,12 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry",
-    "docs": "typedoc",
-    "docs:watch": "typedoc --watch"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.33.4",
+    "@strapi/plugin-cloud": "^5.42.0",
     "@strapi/plugin-users-permissions": "^5.33.4",
-    "@strapi/strapi": "5.33.4",
+    "@strapi/strapi": "^5.42.0",
     "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

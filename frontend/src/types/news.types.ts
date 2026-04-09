@@ -20,10 +20,13 @@ export interface StrapiRichTextChild {
   bold?: boolean;
   italic?: boolean;
   underline?: boolean;
+  children?: StrapiRichTextChild[];
 }
 
 export interface StrapiRichText {
   type: string;
+  level?: number;
+  format?: "ordered" | "unordered";
   children: StrapiRichTextChild[];
 }
 
@@ -34,7 +37,8 @@ export interface StrapiArticle {
   content: StrapiRichText[];
   excerpt: string | null;
   slug: string;
-  publishedTime: string | null;
+  timePublishedAt: string | null;
+  createdAt: string;
   publishedAt: string;
   cover: StrapiImage | null;
   category: StrapiCategory | null;

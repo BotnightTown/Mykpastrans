@@ -1,9 +1,5 @@
 import apiClient from "@/lib/axios";
-import {
-  StrapiArticle,
-  StrapiListResponse,
-  StrapiSingleResponse,
-} from "@/types/news.types";
+import { StrapiArticle, StrapiListResponse } from "@/types/news.types";
 
 export interface GetArticlesParams {
   page?: number;
@@ -15,17 +11,18 @@ export interface GetArticlesParams {
 export async function getArticles(
   params: GetArticlesParams = {},
 ): Promise<StrapiListResponse<StrapiArticle>> {
-  const { search, category } = params;
+  const { page = 1, pageSize = 9, search, category } = params;
 
-  const queryParams: Record<string, any> = {
-    // Вимикаємо обмеження (працює в багатьох версіях Strapi)
-    "pagination[limit]": -1,
-    populate: "cover,category",
+  const queryParams: Record<string, string | number> = {
+    "pagination[page]": page,
+    "pagination[pageSize]": pageSize,
+    "populate[0]": "cover",
+    "populate[1]": "category",
     sort: "publishedAt:desc",
   };
 
   if (search) {
-    queryParams["filters[title][$contains]"] = search;
+    queryParams["filters[title][$containsi]"] = search;
   }
 
   if (category) {
@@ -40,24 +37,21 @@ export async function getArticles(
   return response.data;
 }
 
-export async function getArticleBySlug(slug: string) {
-  try {
-    const response = await apiClient.get("/api/article-news", {
+export async function getArticleBySlug(
+  slug: string,
+): Promise<StrapiListResponse<StrapiArticle>> {
+  const response = await apiClient.get<StrapiListResponse<StrapiArticle>>(
+    "/api/article-news",
+    {
       params: {
-        // Замість рядка з дужками передаємо об'єкт
         "filters[slug][$eq]": slug,
-        populate: "*", // Використовуйте зірочку для тесту, щоб підтягнути все
+        "populate[0]": "cover",
+        "populate[1]": "category",
       },
-    });
-    return response.data;
-  } catch (error: any) {
-    // Якщо знову буде 400, ми побачимо чому саме
-    console.error(
-      "STRAPI ERROR:",
-      error.response?.data?.error || error.message,
-    );
-    return null;
-  }
+    },
+  );
+
+  return response.data;
 }
 
 export async function getCategories() {

@@ -5,17 +5,10 @@ interface NewsCardProps {
   image?: string | null;
   date: string;
   title: string;
-  description?: string | null;
   slug: string;
 }
 
-export default function NewsCard({
-  image,
-  date,
-  title,
-  description,
-  slug,
-}: NewsCardProps) {
+export default function NewsCard({ image, date, title, slug }: NewsCardProps) {
   const strapiUrl =
     process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
   const imageSrc = image
@@ -45,11 +38,6 @@ export default function NewsCard({
           <h3 className="text-(--primary-blue) font-semibold mb-4 text-lg md:text-xl">
             {title}
           </h3>
-          {description && (
-            <p className="text-gray-700 text-sm md:text-base line-clamp-2 mt-auto">
-              {description}
-            </p>
-          )}
         </div>
       </article>
     </Link>

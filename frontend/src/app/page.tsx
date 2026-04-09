@@ -2,10 +2,23 @@ import Carousel from "@/components/Carousel";
 import NewsCard from "@/components/NewsCard";
 import RouteShortInfo from "@/components/ui/RouteShortInfo";
 import SectionTitle from "@/components/ui/SectionTitle";
-import Image from "next/image";
 import Link from "next/link";
+import { getArticles } from "@/services/news.service";
+import { formatDate } from "@/utils/date";
+import { StrapiArticle } from "@/types/news.types";
 
-export default function Home() {
+export default async function Home() {
+  let latestNews: StrapiArticle[] = [];
+  try {
+    const res = await getArticles({ page: 1, pageSize: 3 });
+    latestNews = res.data;
+  } catch {
+    latestNews = [];
+  }
+
+  const strapiUrl =
+    process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
+
   return (
     <div className="">
       <Carousel>
@@ -67,7 +80,6 @@ export default function Home() {
                   Розклад
                 </div>
               </li>
-
               <RouteShortInfo
                 routeNumber="1"
                 routeName="Тернівка — «Океан»"
@@ -95,31 +107,50 @@ export default function Home() {
             </ul>
           </div>
         </section>
-        <section className="max-w-6xl mx-auto flex flex-col gap-8">
-          <SectionTitle title="Новини та оголошення" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {/* <NewsCard
-              image="/carousel/00199874.jpg"
-              date="13 Лютого, 2026"
-              title="Оновлення графіку руху на маршруті №91"
-              description="Для зручності пасажирів у вечірній час додано два додаткові рейси..."
-              slug="route-91-schedule-update"
-            />
-            <NewsCard
-              image="/carousel/00199874.jpg"
-              date="11 Лютого, 2026"
-              title="Безконтактна оплата стає ще зручнішою"
-              description="Миколаївпастранс впроваджує нову систему моніторингу оплат CityCard."
-              slug="contactless-payment-update"
-            />
-            <NewsCard
-              image="/carousel/00199874.jpg"
-              date="09 Лютого, 2026"
-              title="Запрошуємо на роботу водіїв категорії 'D'"
-              description="Офіційне працевлаштування, повний соціальний пакет та стабільна зарплата."
-              slug="drivers-recruitment"
-            /> */}
+
+        <section className="max-w-6xl w-full flex flex-col gap-8">
+          <div className="flex items-center justify-between">
+            <SectionTitle title="Новини та оголошення" />
+            <Link
+              href="/news"
+              className="text-sm font-bold text-(--primary-blue) hover:underline uppercase tracking-wider hidden sm:block"
+            >
+              Всі новини →
+            </Link>
           </div>
+
+          {latestNews.length === 0 ? (
+            <p className="text-gray-400 text-center py-8">Новини відсутні</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {latestNews.map((article) => {
+                const imageUrl = article.cover?.url
+                  ? article.cover.url.startsWith("http")
+                    ? article.cover.url
+                    : `${strapiUrl}${article.cover.url}`
+                  : null;
+
+                return (
+                  <NewsCard
+                    key={article.id}
+                    slug={article.slug}
+                    image={imageUrl}
+                    date={formatDate(
+                      article.timePublishedAt ?? article.publishedAt,
+                    )}
+                    title={article.title}
+                  />
+                );
+              })}
+            </div>
+          )}
+
+          <Link
+            href="/news"
+            className="sm:hidden text-center text-sm font-bold text-(--primary-blue) hover:underline uppercase tracking-wider"
+          >
+            Всі новини →
+          </Link>
         </section>
       </div>
     </div>

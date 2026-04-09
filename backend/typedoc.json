@@ -1,9 +1,0 @@
-{
-  "entryPoints": ["src"],
-  "entryPointStrategy": "expand",
-  "out": "docs",
-  "tsconfig": "tsconfig.json",
-  "name": "MykpasTrans Backend (Strapi)",
-  "include": ["src/api/**/*.ts", "src/components/**/*.ts", "src/index.ts"],
-  "exclude": ["node_modules/**", "dist/**"]
-}
