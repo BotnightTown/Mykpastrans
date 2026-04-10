@@ -16,6 +16,8 @@ function renderChildren(children: StrapiRichTextChild[]) {
 }
 
 export function RichTextRenderer({ content }: { content: StrapiRichText[] }) {
+  if (!content) return "";
+
   return (
     <div className="max-w-none">
       {content.map((block, i) => {

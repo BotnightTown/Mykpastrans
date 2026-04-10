@@ -39,6 +39,7 @@ function HeaderDesktop() {
               items={[
                 { href: "/about/history", title: "Історія підприємства" },
                 { href: "/about/rolling-stock", title: "Рухомий склад" },
+                { href: "/about/vacancies", title: "Вакансії" },
               ]}
             />
             <HeaderLink href="/contacts" title="Контакти" />
@@ -125,6 +126,12 @@ function HeaderMobile() {
                 className="pl-4 text-sm hover:bg-gray-100"
               >
                 Рухомий склад
+              </Link>
+              <Link
+                href="/about/vacancies"
+                className="pl-4 text-sm hover:bg-gray-100"
+              >
+                Вакансії
               </Link>
             </div>
           </div>
