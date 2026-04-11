@@ -7,6 +7,7 @@ export interface ScheduleBusDirection extends Struct.ComponentSchema {
   };
   attributes: {
     endpoint_name: Schema.Attribute.String;
+    isWeekend: Schema.Attribute.Boolean;
     trips: Schema.Attribute.Component<'schedule.bus-trip', true>;
   };
 }

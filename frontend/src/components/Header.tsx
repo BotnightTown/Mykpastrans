@@ -6,7 +6,6 @@ import HeaderLink from "./ui/HeaderLink";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 
-
 function HeaderDesktop() {
   return (
     <header className="bg-white border-b-4 border-(--primary-blue) sticky top-0 z-50 py-3 md:py-4 px-4 md:px-[5%]">
@@ -26,7 +25,7 @@ function HeaderDesktop() {
 
         <nav className="hidden md:block">
           <ul className="flex gap-8 list-none">
-            <HeaderLink href="#" title="Новини" />
+            <HeaderLink href="/news" title="Новини" />
             <HeaderLink
               title="Пасажирам"
               items={[
@@ -40,6 +39,7 @@ function HeaderDesktop() {
               items={[
                 { href: "/about/history", title: "Історія підприємства" },
                 { href: "/about/rolling-stock", title: "Рухомий склад" },
+                { href: "/about/vacancies", title: "Вакансії" },
               ]}
             />
             <HeaderLink href="/contacts" title="Контакти" />
@@ -126,6 +126,12 @@ function HeaderMobile() {
                 className="pl-4 text-sm hover:bg-gray-100"
               >
                 Рухомий склад
+              </Link>
+              <Link
+                href="/about/vacancies"
+                className="pl-4 text-sm hover:bg-gray-100"
+              >
+                Вакансії
               </Link>
             </div>
           </div>

@@ -10,16 +10,26 @@ interface Props {
   routes: Route[];
 }
 
-export default function RouteSidebar({ selectedRoute, onSelect, routes }: Props) {
+export default function RouteSidebar({
+  selectedRoute,
+  onSelect,
+  routes,
+}: Props) {
+  const sortedRoutes = [...routes].sort((a, b) =>
+    a.number.localeCompare(b.number, undefined, { numeric: true }),
+  );
+
   return (
     <div>
       <div className="flex md:hidden w-full overflow-x-auto bg-gray-50 p-2 gap-2 shadow-md">
-        {routes.map(route => (
+        {routes.map((route) => (
           <button
             key={route.id}
             onClick={() => onSelect(route.number)}
-            className={`flex-shrink-0 px-4 py-2 rounded-lg font-semibold transition-colors duration-200 ${
-              selectedRoute === route.number ? 'bg-blue-500 text-white' : 'bg-white hover:bg-gray-200'
+            className={`shrink-0 px-4 py-2 rounded-lg font-semibold transition-colors duration-200 ${
+              selectedRoute === route.number
+                ? "bg-(--primary-blue) text-white"
+                : "bg-white hover:bg-gray-200"
             }`}
           >
             {route.number}
@@ -31,15 +41,19 @@ export default function RouteSidebar({ selectedRoute, onSelect, routes }: Props)
         <h2 className="text-lg font-bold text-gray-700 mb-2 text-center">№</h2>
 
         {routes.length === 0 && (
-          <div className="text-gray-400 text-sm text-center">Немає маршрутів</div>
+          <div className="text-gray-400 text-sm text-center">
+            Немає маршрутів
+          </div>
         )}
 
-        {routes.map(route => (
+        {sortedRoutes.map((route) => (
           <button
             key={route.id}
             onClick={() => onSelect(route.number)}
-            className={`p-3 rounded-lg font-semibold text-lg transition-colors duration-200 ${
-              selectedRoute === route.number ? 'bg-blue-500 text-white' : 'bg-white hover:bg-gray-200'
+            className={`p-3 rounded-lg font-semibold text-lg transition-colors duration-200 cursor-pointer ${
+              selectedRoute === route.number
+                ? "bg-(--primary-blue) text-white"
+                : "bg-white hover:bg-gray-200"
             }`}
           >
             {route.number}

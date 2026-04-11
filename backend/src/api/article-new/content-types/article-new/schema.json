@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "article_news",
+  "info": {
+    "singularName": "article-new",
+    "pluralName": "article-news",
+    "displayName": "article-new"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "excerpt": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "timePublishedAt": {
+      "type": "datetime"
+    }
+  }
+}

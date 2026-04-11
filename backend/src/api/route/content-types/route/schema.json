@@ -21,6 +21,15 @@
       "type": "component",
       "component": "schedule.bus-direction",
       "repeatable": true
+    },
+    "intervalTime": {
+      "type": "string"
+    },
+    "stops": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::route-stop.route-stop",
+      "mappedBy": "route"
     }
   }
 }

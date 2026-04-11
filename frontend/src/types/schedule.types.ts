@@ -1,21 +1,22 @@
-export interface Route {
-  id: number;
-  number: string;
-  name: string;
-}
-
-export interface Stop {
-  id: number;
-  name: string;
-}
-
-export interface Schedule {
+export interface BusTrip {
   id: number;
   time: string;
-  route: Route;
-  stop: Stop;
+  note?: string | null;
+  is_short?: boolean | null;
 }
 
-export interface StrapiResponse<T> {
-  data: T[];
+export interface BusDirection {
+  id: number;
+  endpoint_name: string;
+  isWeekend: boolean;
+  trips: BusTrip[];
+}
+
+export interface Route {
+  id: number;
+  documentId: string;
+  number: string;
+  title: string;
+  intervalTime: string;
+  schedule: BusDirection[];
 }

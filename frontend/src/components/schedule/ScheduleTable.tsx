@@ -1,86 +1,93 @@
-import { Schedule } from '@/types/schedule.types';
+import { Route } from "@/types/schedule.types";
 
 interface Props {
   routeNumber: string;
-  schedules: Schedule[];
-  direction: 'Туди' | 'Назад';
+  routes: Route[];
+  direction: "Туди" | "Назад";
+  dayFilter: string;
 }
 
-export default function ScheduleTable({ routeNumber, schedules, direction }: Props) {
-  const filtered = schedules?.filter(s => s.route.number === routeNumber) || [];
+export default function ScheduleTable({
+  routeNumber,
+  routes,
+  direction,
+  dayFilter,
+}: Props) {
+  const route = routes.find((r) => r.number === routeNumber);
+  const isWeekendFilter = dayFilter === "Вихідні та святкові дні";
 
-  let stops = Array.from(new Set(filtered.map(s => s.stop.name)));
-  if (direction === 'Назад') stops = stops.slice().reverse();
+  const filteredSchedule = (() => {
+    const filtered =
+      route?.schedule.filter((dir) => dir.isWeekend === isWeekendFilter) ?? [];
 
-  const rows: Record<string, string>[] = [];
-  filtered.forEach((s, i) => {
-    if (!rows[i]) rows[i] = {};
-    rows[i][s.stop.name] = s.time;
-  });
+    if (filtered.length === 0) {
+      return route?.schedule.filter((dir) => dir.isWeekend === false) ?? [];
+    }
 
-  const startStop = stops[0] || '';
-  const endStop = stops[stops.length - 1] || '';
+    return filtered;
+  })();
+
+  const scheduleIndex = direction === "Туди" ? 0 : 1;
+  const directionData = filteredSchedule[scheduleIndex];
+
+  const trips = [...(directionData?.trips ?? [])].sort((a, b) =>
+    a.time.localeCompare(b.time),
+  );
 
   return (
     <div>
-      <div className="mb-3 text-2xl font-bold text-center flex items-center justify-center gap-4">
-        <span className="text-blue-600">{startStop}</span>
+      {directionData && (
+        <div className="mb-3 text-2xl font-bold text-center">
+          <span className="text-[#e65e92]">{directionData.endpoint_name}</span>
+        </div>
+      )}
 
-        <span className="text-gray-400 font-light"> — </span>
-
-        <span className="text-[#e65e92]">{endStop}</span>
-      </div>
-
-      <table className="w-full table-auto border-collapse text-center">
-        <thead className="bg-gray-100">
+      <table className="border-separate border-spacing-1 border border-(--primary-blue) w-full table-auto bg-(--primary-blue)">
+        <thead>
           <tr>
-            <th className="border p-1 text-sm font-semibold">
-              <div
-                className="inline-block text-center"
-                style={{
-                  writingMode: 'vertical-rl',
-                  transform: 'rotate(180deg)',
-                  minWidth: '20px',
-                  whiteSpace: 'normal',
-                  wordBreak: 'break-word',
-                }}
-              >
-                № випуску
-              </div>
+            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
+              №
             </th>
-
-            {stops.map(stop => (
-              <th key={stop} className="border p-1 text-sm font-semibold">
-                <div
-                  className="inline-block text-center"
-                  style={{
-                    writingMode: 'vertical-rl',
-                    transform: 'rotate(180deg)',
-                    minWidth: '40px',
-                    maxHeight: '150px',
-                    whiteSpace: 'normal',
-                    wordBreak: 'break-word',
-                  }}
-                  title={stop}
-                >
-                  {stop}
-                </div>
-              </th>
-            ))}
+            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
+              Час
+            </th>
+            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
+              Примітка
+            </th>
+            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
+              Короткий
+            </th>
           </tr>
         </thead>
 
         <tbody>
-          {rows.map((row, i) => (
-            <tr key={i} className="transition-colors hover:bg-pink-100">
-              <td className="border p-1 text-sm font-medium">{i + 1}</td>
-              {stops.map(stop => (
-                <td key={stop} className="border p-1 text-sm">
-                  {row[stop] || '-'}
-                </td>
-              ))}
+          {trips.length === 0 ? (
+            <tr>
+              <td
+                colSpan={4}
+                className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white text-center text-gray-400"
+              >
+                Рейсів не знайдено
+              </td>
             </tr>
-          ))}
+          ) : (
+            trips.map((trip, i) => (
+              <tr key={trip.id}>
+                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
+                  {i + 1}
+                </td>
+                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
+                  {trip.time}
+                </td>
+                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
+                  {trip.note ?? "—"}
+                </td>
+                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
+                  {trip.is_short ? "Так" : "Ні"}
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
