@@ -531,6 +531,38 @@ export interface ApiContactMessageContactMessage
   };
 }
 
+export interface ApiRouteStopRouteStop extends Struct.CollectionTypeSchema {
+  collectionName: 'route_stops';
+  info: {
+    displayName: 'Route Stop';
+    pluralName: 'route-stops';
+    singularName: 'route-stop';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    direction: Schema.Attribute.Enumeration<['forward', 'backward']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::route-stop.route-stop'
+    > &
+      Schema.Attribute.Private;
+    onDemand: Schema.Attribute.Boolean;
+    Order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    route: Schema.Attribute.Relation<'manyToOne', 'api::route.route'>;
+    stop: Schema.Attribute.Relation<'manyToOne', 'api::stop.stop'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRouteRoute extends Struct.CollectionTypeSchema {
   collectionName: 'routes';
   info: {
@@ -552,7 +584,38 @@ export interface ApiRouteRoute extends Struct.CollectionTypeSchema {
     number: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     schedule: Schema.Attribute.Component<'schedule.bus-direction', true>;
+    stops: Schema.Attribute.Relation<'oneToMany', 'api::route-stop.route-stop'>;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStopStop extends Struct.CollectionTypeSchema {
+  collectionName: 'stops';
+  info: {
+    displayName: 'stop';
+    pluralName: 'stops';
+    singularName: 'stop';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::stop.stop'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    note: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    route_stops: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::route-stop.route-stop'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1105,7 +1168,9 @@ declare module '@strapi/strapi' {
       'api::article-new.article-new': ApiArticleNewArticleNew;
       'api::category.category': ApiCategoryCategory;
       'api::contact-message.contact-message': ApiContactMessageContactMessage;
+      'api::route-stop.route-stop': ApiRouteStopRouteStop;
       'api::route.route': ApiRouteRoute;
+      'api::stop.stop': ApiStopStop;
       'api::vacancy.vacancy': ApiVacancyVacancy;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
