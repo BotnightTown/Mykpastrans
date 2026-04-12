@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "route_stops",
+  "info": {
+    "singularName": "route-stop",
+    "pluralName": "route-stops",
+    "displayName": "Route Stop"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Order": {
+      "type": "integer"
+    },
+    "direction": {
+      "type": "enumeration",
+      "enum": [
+        "forward",
+        "backward"
+      ]
+    },
+    "onDemand": {
+      "type": "boolean"
+    },
+    "route": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::route.route",
+      "inversedBy": "stops"
+    },
+    "stop": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::stop.stop",
+      "inversedBy": "route_stops"
+    }
+  }
+}
