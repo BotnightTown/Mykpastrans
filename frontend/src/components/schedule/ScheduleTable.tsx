@@ -47,7 +47,7 @@ export default function ScheduleTable({
       <div className="overflow-hidden rounded-lg border-2 border-[#378ADD] shadow-md">
         <table className="w-full table-auto border-collapse">
           <thead>
-            <tr className="bg-[#1a8fff]">
+            <tr className="bg-[#0E95F7]">
               <th className="px-4 py-3 text-left text-base md:text-lg font-bold text-white tracking-wide uppercase">
                 №
               </th>

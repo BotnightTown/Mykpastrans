@@ -20,7 +20,7 @@ export default function Footer() {
           <ul className="space-y-2">
             <li>
               <a
-                href="#"
+                href="/about/history"
                 className="text-[#aaa] text-sm hover:text-white transition-colors"
               >
                 Про нас
@@ -44,7 +44,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="#"
+                href="about/vacancies"
                 className="text-[#aaa] text-sm hover:text-white transition-colors"
               >
                 Вакансії

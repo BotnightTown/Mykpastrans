@@ -1,5 +1,4 @@
 import { getArticleBySlug, getArticles } from "@/services/news.service";
-import { StrapiRichText, StrapiRichTextChild } from "@/types/news.types";
 import { formatDate } from "@/utils/date";
 import { RichTextRenderer } from "@/utils/renderText";
 import Image from "next/image";
@@ -21,7 +20,6 @@ export async function generateStaticParams() {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
-
   let article;
   try {
     const res = await getArticleBySlug(slug);
@@ -30,12 +28,10 @@ export default async function ArticlePage({ params }: Props) {
     console.error("Failed to fetch article:", e);
     notFound();
   }
-
   if (!article) notFound();
 
   const strapiUrl =
     process.env.NEXT_PUBLIC_STRAPI_URL ?? "http://localhost:1337";
-
   const imageSrc = article.cover?.url
     ? article.cover.url.startsWith("http")
       ? article.cover.url
@@ -43,53 +39,91 @@ export default async function ArticlePage({ params }: Props) {
     : null;
 
   return (
-    <div className="w-full min-h-screen bg-(--light-bg)">
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-8 py-4">
+    <div className="w-full min-h-screen bg-white">
+
+      {/* Кнопка назад — виразна, на синьому фоні */}
+      <div style={{ background: "#FF7AAD" }}>
+        <div className="max-w-4xl mx-auto px-8 py-3">
           <Link
             href="/news"
-            className="text-sm text-(--primary-blue) font-semibold hover:underline flex items-center gap-1"
+            className="inline-flex items-center gap-2 text-xl font-bold text-white transition-opacity hover: w-fit"
           >
-            ← Всі новини
+            ← Повернутись до новин
           </Link>
         </div>
       </div>
 
       <article className="max-w-4xl mx-auto px-8 py-12">
+
+        {/* Категорія — синя */}
         {article.category && (
-          <span className="inline-block bg-(--primary-blue) text-white text-xs font-bold uppercase tracking-wider px-3 py-1 mb-6">
+          <span
+            className="inline-block text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg mb-5"
+            style={{ background: "#0E95F7" }}
+          >
             {article.category.name}
           </span>
         )}
 
-        <h1 className="text-3xl md:text-4xl font-black text-(--dark-navy) mb-4 leading-tight">
+        {/* Заголовок */}
+        <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
           {article.title}
         </h1>
 
-        <p className="text-gray-500 text-sm mb-8 border-b border-gray-200 pb-8">
-          {formatDate(article.timePublishedAt ?? article.publishedAt)}
-        </p>
+        {/* Дата */}
+        <div
+          className="flex items-center gap-3 mb-8 pb-8"
+          style={{ borderBottom: "2px solid #e8f4fe" }}
+        >
+          <div
+            className="w-1 h-5 rounded-full"
+            style={{ background: "#FF7AAD" }}
+          />
+          <p className="text-gray-400 text-sm font-medium">
+            {formatDate(article.timePublishedAt ?? article.publishedAt)}
+          </p>
+        </div>
 
+        {/* Фото */}
         {imageSrc && (
-          <div className="mb-8">
+          <div
+            className="mb-8 rounded-2xl overflow-hidden"
+            style={{ border: "2px solid #e8f4fe" }}
+          >
             <Image
               src={imageSrc}
               alt={article.cover?.alternativeText ?? article.title}
               width={800}
               height={450}
-              className="max-w-full w-max h-auto object-cover max-h-112.5"
+              className="w-full h-auto object-cover max-h-[450px]"
             />
           </div>
         )}
 
+        {/* Excerpt — оригінальний стиль */}
         {article.excerpt && (
-          <p className="text-lg text-gray-600 font-medium mb-8 border-l-4 border-(--accent-pink) pl-4">
+          <p className="text-lg text-gray-600 font-medium mb-8 border-l-4 border-[#e65e92] pl-5 bg-[#fdf0f5] py-4 pr-4 rounded-r-lg">
             {article.excerpt}
           </p>
         )}
 
-        <RichTextRenderer content={article.content} />
+        {/* Контент */}
+        <div className="prose prose-lg max-w-none">
+          <RichTextRenderer content={article.content} />
+        </div>
+
       </article>
+
+      <div style={{ background: "#FF7AAD" }}>
+        <div className="max-w-4xl mx-auto px-8 py-3">
+          <Link
+            href="/news"
+            className="inline-flex items-center gap-2 text-xl font-bold text-white transition-opacity hover: w-fit"
+          >
+            ← Повернутись до новин
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

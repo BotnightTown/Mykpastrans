@@ -9,7 +9,7 @@ export default function DirectionSwitch({ direction, setDirection }: Props) {
       <button
         className={`px-6 py-2 rounded-lg font-bold text-base transition-all duration-200 cursor-pointer ${
           direction === "Туди"
-            ? "bg-[#1a8fff] text-white shadow-sm"
+            ? "bg-[#0E95F7] text-white shadow-sm"
             : "text-[#185FA5] hover:bg-[#dceefb]"
         }`}
         onClick={() => setDirection("Туди")}
