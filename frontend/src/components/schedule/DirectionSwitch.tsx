@@ -5,26 +5,26 @@ interface Props {
 
 export default function DirectionSwitch({ direction, setDirection }: Props) {
   return (
-    <div className="flex gap-2 my-4">
+    <div className="flex gap-2 my-2 p-1 bg-[#f0f7ff] rounded-xl border border-[#b5d4f4] w-fit">
       <button
-        className={`px-4 py-2 rounded font-semibold cursor-pointer ${
+        className={`px-6 py-2 rounded-lg font-bold text-base transition-all duration-200 cursor-pointer ${
           direction === "Туди"
-            ? "bg-(--primary-blue) text-white"
-            : "bg-gray-200"
+            ? "bg-[#1a8fff] text-white shadow-sm"
+            : "text-[#185FA5] hover:bg-[#dceefb]"
         }`}
         onClick={() => setDirection("Туди")}
       >
-        Туди
+        ← Туди
       </button>
       <button
-        className={`px-4 py-2 rounded font-semibold cursor-pointer ${
+        className={`px-6 py-2 rounded-lg font-bold text-base transition-all duration-200 cursor-pointer ${
           direction === "Назад"
-            ? "bg-(--primary-blue) text-white"
-            : "bg-gray-200"
+            ? "bg-[#e65e92] text-white shadow-sm"
+            : "text-[#185FA5] hover:bg-[#dceefb]"
         }`}
         onClick={() => setDirection("Назад")}
       >
-        Назад
+        Назад →
       </button>
     </div>
   );

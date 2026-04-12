@@ -37,59 +37,76 @@ export default function ScheduleTable({
   return (
     <div>
       {directionData && (
-        <div className="mb-3 text-2xl font-bold text-center">
-          <span className="text-[#e65e92]">{directionData.endpoint_name}</span>
+        <div className="mb-5 text-center">
+          <span className="text-3xl md:text-4xl font-black text-[#e65e92] tracking-tight drop-shadow-xs">
+            {directionData.endpoint_name}
+          </span>
         </div>
       )}
 
-      <table className="border-separate border-spacing-1 border border-(--primary-blue) w-full table-auto bg-(--primary-blue)">
-        <thead>
-          <tr>
-            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
-              №
-            </th>
-            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
-              Час
-            </th>
-            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
-              Примітка
-            </th>
-            <th className="border border-(--primary-blue) px-2 py-1 text-left text-xs md:text-sm bg-(--primary-blue) text-white">
-              Короткий
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {trips.length === 0 ? (
-            <tr>
-              <td
-                colSpan={4}
-                className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white text-center text-gray-400"
-              >
-                Рейсів не знайдено
-              </td>
+      <div className="overflow-hidden rounded-lg border-2 border-[#378ADD] shadow-md">
+        <table className="w-full table-auto border-collapse">
+          <thead>
+            <tr className="bg-[#1a8fff]">
+              <th className="px-4 py-3 text-left text-base md:text-lg font-bold text-white tracking-wide uppercase">
+                №
+              </th>
+              <th className="px-4 py-3 text-left text-base md:text-lg font-bold text-white tracking-wide uppercase">
+                Час
+              </th>
+              <th className="px-4 py-3 text-left text-base md:text-lg font-bold text-white tracking-wide uppercase">
+                Примітка
+              </th>
+              <th className="px-4 py-3 text-left text-base md:text-lg font-bold text-white tracking-wide uppercase">
+                Короткий
+              </th>
             </tr>
-          ) : (
-            trips.map((trip, i) => (
-              <tr key={trip.id}>
-                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
-                  {i + 1}
-                </td>
-                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
-                  {trip.time}
-                </td>
-                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
-                  {trip.note ?? "—"}
-                </td>
-                <td className="border border-(--primary-blue) px-2 py-1 text-xs md:text-sm bg-white">
-                  {trip.is_short ? "Так" : "Ні"}
+          </thead>
+
+          <tbody>
+            {trips.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={4}
+                  className="px-4 py-6 text-base bg-white text-center text-gray-400"
+                >
+                  Рейсів не знайдено
                 </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : (
+              trips.map((trip, i) => (
+                <tr
+                  key={trip.id}
+                  className={`border-b border-[#dceefb] transition-colors duration-150 ${
+                    i % 2 === 0 ? "bg-white" : "bg-[#f0f7ff]"
+                  } hover:bg-[#dceefb]`}
+                >
+                  <td className="px-4 py-3 text-base md:text-lg text-[#185FA5] font-semibold">
+                    {i + 1}
+                  </td>
+                  <td className="px-4 py-3 text-base md:text-lg font-bold text-[#1a1a2e]">
+                    {trip.time}
+                  </td>
+                  <td className="px-4 py-3 text-base md:text-lg text-gray-600">
+                    {trip.note ?? "—"}
+                  </td>
+                  <td className="px-4 py-3 text-base md:text-lg">
+                    {trip.is_short ? (
+                      <span className="inline-block bg-[#f9a8d4] text-[#9d174d] text-sm font-bold px-4 py-1.5 rounded-md">
+                        Так
+                      </span>
+                    ) : (
+                      <span className="inline-block bg-[#e8e8e8] text-[#888] text-sm font-bold px-4 py-1.5 rounded-md">
+                        Ні
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -49,25 +49,25 @@ export default function SchedulePage() {
         />
       </div>
 
-      <div className="flex-1 p-4 md:p-6 flex flex-col gap-4">
-        <div className="text-center md:text-left">
+      <div className="flex-1 p-4 md:p-6 flex flex-col gap-3">
+
+        <div className="text-left">
           <h1 className="text-3xl md:text-4xl font-black mb-1 text-[#e65e92]">
             Маршрут №{selectedRoute}{" "}
             {routes.find((r) => r.number === selectedRoute)?.title}
           </h1>
-          <p className="text-gray-600 text-sm md:text-base">
+          <p className="text-gray-500 text-sm md:text-base">
             {currentDate} · {dayFilter} · Діє з 26.02.2026
           </p>
         </div>
 
-        <div className="flex flex-col -mb-8 sm:flex-row gap-4 items-center justify-between">
-          <Filters dayFilter={dayFilter} setDayFilter={setDayFilter} />
-        </div>
-        <div className="flex flex-col sm:flex-row items-center justify-between">
-          <DirectionSwitch direction={direction} setDirection={setDirection} />
-        </div>
+        <div className="h-px bg-[#dceefb]" />
 
-        <div className="flex-1 mt-2 overflow-auto">
+        <Filters dayFilter={dayFilter} setDayFilter={setDayFilter} />
+
+        <DirectionSwitch direction={direction} setDirection={setDirection} />
+
+        <div className="flex-1 overflow-auto">
           <ScheduleTable
             routeNumber={selectedRoute}
             routes={routes}
@@ -75,6 +75,7 @@ export default function SchedulePage() {
             dayFilter={dayFilter}
           />
         </div>
+
       </div>
     </div>
   );
