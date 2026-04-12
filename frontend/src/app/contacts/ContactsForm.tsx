@@ -11,13 +11,10 @@ export function ContactsForm() {
   const [description, setDescription] = useState<string>("");
 
   const [message, setMessage] = useState<string>("");
-  const [messageType, setMessageType] = useState<"success" | "error" | null>(
-    null,
-  );
+  const [messageType, setMessageType] = useState<"success" | "error" | null>(null);
 
   const handleInputPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value;
-
     let digits = input.replace(/\D/g, "");
 
     if (digits.startsWith("380")) {
@@ -38,23 +35,15 @@ export function ContactsForm() {
     let formatted = "";
     if (digits.length > 0) {
       formatted = "+" + digits.substring(0, 2);
-      if (digits.length > 2) {
-        formatted += " (" + digits.substring(2, 5);
-      }
-      if (digits.length > 5) {
-        formatted += ") " + digits.substring(5, 8);
-      }
-      if (digits.length > 8) {
-        formatted += "-" + digits.substring(8, 12);
-      }
+      if (digits.length > 2) formatted += " (" + digits.substring(2, 5);
+      if (digits.length > 5) formatted += ") " + digits.substring(5, 8);
+      if (digits.length > 8) formatted += "-" + digits.substring(8, 12);
     }
 
     setPhone(formatted);
   };
 
-  const clearPhone = (phone: string) => {
-    return phone.replace(/\D/g, "");
-  };
+  const clearPhone = (phone: string) => phone.replace(/\D/g, "");
 
   const handleRequest = async () => {
     try {
@@ -81,15 +70,23 @@ export function ContactsForm() {
     }
   };
 
+  const inputClass = "w-full px-4 py-2.5 rounded-lg text-sm outline-none transition-all";
+  const inputStyle = {
+    border: "2px solid #e8f4fe",
+    background: "#f8fbff",
+  };
+
   return (
     <div id="feedback">
+      {/* Підзаголовок — без змін */}
       <h2 className="text-2xl font-black uppercase border-b-2 border-(--accent-pink) inline-block mb-8">
         Написати звернення
       </h2>
 
-      <form className="space-y-6">
+      <form className="space-y-4">
+
         <div>
-          <label className="block mb-2 font-semibold text-sm">
+          <label className="block mb-1.5 font-semibold text-sm text-gray-700">
             Ваше Прізвище та Ім'я
           </label>
           <input
@@ -100,12 +97,15 @@ export function ContactsForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full px-3 py-3 border border-[#dddddd] rounded-xs text-base outline-none focus:border-(--primary-blue) focus:ring-2 focus:ring-[rgba(14,149,247,0.12)]"
+            className={inputClass}
+            style={inputStyle}
+            onFocus={(e) => { e.currentTarget.style.border = "2px solid #0E95F7"; e.currentTarget.style.background = "#fff"; }}
+            onBlur={(e) => { e.currentTarget.style.border = "2px solid #e8f4fe"; e.currentTarget.style.background = "#f8fbff"; }}
           />
         </div>
 
         <div>
-          <label className="block mb-2 font-semibold text-sm">
+          <label className="block mb-1.5 font-semibold text-sm text-gray-700">
             Контактний телефон
           </label>
           <input
@@ -116,12 +116,15 @@ export function ContactsForm() {
             onChange={handleInputPhone}
             placeholder="+38 (0"
             required
-            className="w-full px-3 py-3 border border-[#dddddd] rounded-xs text-base outline-none focus:border-(--primary-blue) focus:ring-2 focus:ring-[rgba(14,149,247,0.12)]"
+            className={inputClass}
+            style={inputStyle}
+            onFocus={(e) => { e.currentTarget.style.border = "2px solid #0E95F7"; e.currentTarget.style.background = "#fff"; }}
+            onBlur={(e) => { e.currentTarget.style.border = "2px solid #e8f4fe"; e.currentTarget.style.background = "#f8fbff"; }}
           />
         </div>
 
         <div>
-          <label className="block mb-2 font-semibold text-sm">
+          <label className="block mb-1.5 font-semibold text-sm text-gray-700">
             Електронна пошта
           </label>
           <input
@@ -132,20 +135,26 @@ export function ContactsForm() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="example@gmail.com"
             required
-            className="w-full px-3 py-3 border border-[#dddddd] rounded-xs text-base outline-none focus:border-(--primary-blue) focus:ring-2 focus:ring-[rgba(14,149,247,0.12)]"
+            className={inputClass}
+            style={inputStyle}
+            onFocus={(e) => { e.currentTarget.style.border = "2px solid #0E95F7"; e.currentTarget.style.background = "#fff"; }}
+            onBlur={(e) => { e.currentTarget.style.border = "2px solid #e8f4fe"; e.currentTarget.style.background = "#f8fbff"; }}
           />
         </div>
 
         <div>
-          <label className="block mb-2 font-semibold text-sm">
+          <label className="block mb-1.5 font-semibold text-sm text-gray-700">
             Тема звернення
           </label>
           <select
             id="subject"
             name="subject"
-            className="w-full px-3 py-3 border border-[#dddddd] rounded-xs text-base outline-none focus:border-(--primary-blue) focus:ring-2 focus:ring-[rgba(14,149,247,0.12)]"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
+            className={inputClass}
+            style={inputStyle}
+            onFocus={(e) => { e.currentTarget.style.border = "2px solid #0E95F7"; e.currentTarget.style.background = "#fff"; }}
+            onBlur={(e) => { e.currentTarget.style.border = "2px solid #e8f4fe"; e.currentTarget.style.background = "#f8fbff"; }}
           >
             <option>Запит про розклад</option>
             <option>Скарга на роботу водія</option>
@@ -156,7 +165,7 @@ export function ContactsForm() {
         </div>
 
         <div>
-          <label className="block mb-2 font-semibold text-sm">
+          <label className="block mb-1.5 font-semibold text-sm text-gray-700">
             Повідомлення
           </label>
           <textarea
@@ -167,27 +176,38 @@ export function ContactsForm() {
             required
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full px-3 py-3 border border-[#dddddd] rounded-xs text-base outline-none resize-y focus:border-(--primary-blue) focus:ring-2 focus:ring-[rgba(14,149,247,0.12)]"
+            className={`${inputClass} resize-y`}
+            style={inputStyle}
+            onFocus={(e) => { e.currentTarget.style.border = "2px solid #0E95F7"; e.currentTarget.style.background = "#fff"; }}
+            onBlur={(e) => { e.currentTarget.style.border = "2px solid #e8f4fe"; e.currentTarget.style.background = "#f8fbff"; }}
           />
         </div>
+
         {message && (
           <p
-            className={`p-3 rounded text-sm font-semibold ${
+            className={`p-3 rounded-lg text-sm font-semibold ${
               messageType === "success"
-                ? "bg-green-100 text-green-700 border border-green-300"
-                : "bg-red-100 text-red-700 border border-red-300"
+                ? "bg-green-50 text-green-700 border border-green-200"
+                : "bg-red-50 text-red-700 border border-red-200"
             }`}
           >
             {message}
           </p>
         )}
+
         <button
           type="button"
-          className="w-full bg-(--primary-blue) hover:bg-[#0b7ac9] text-white border-none py-4 px-8 font-bold uppercase cursor-pointer transition-colors"
           onClick={handleRequest}
+          className="w-full text-white font-bold uppercase tracking-wider rounded-lg transition-all hover:opacity-90 active:scale-95"
+          style={{
+            background: "#FF7AAD",
+            paddingTop: "10px",
+            paddingBottom: "10px",
+          }}
         >
           Надіслати звернення
         </button>
+
       </form>
     </div>
   );

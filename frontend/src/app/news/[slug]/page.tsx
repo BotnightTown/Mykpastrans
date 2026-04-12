@@ -41,21 +41,19 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <div className="w-full min-h-screen bg-white">
 
-      {/* Кнопка назад — виразна, на синьому фоні */}
       <div style={{ background: "#FF7AAD" }}>
         <div className="max-w-4xl mx-auto px-8 py-3">
           <Link
-            href="/news"
-            className="inline-flex items-center gap-2 text-xl font-bold text-white transition-opacity hover: w-fit"
-          >
-            ← Повернутись до новин
+              href="/news"
+              className="flex items-center justify-center gap-2 text-xl font-bold text-white transition-opacity hover:opacity-80 w-full"
+            >
+              Повернутись до новин
           </Link>
         </div>
       </div>
 
       <article className="max-w-4xl mx-auto px-8 py-12">
 
-        {/* Категорія — синя */}
         {article.category && (
           <span
             className="inline-block text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg mb-5"
@@ -65,12 +63,10 @@ export default async function ArticlePage({ params }: Props) {
           </span>
         )}
 
-        {/* Заголовок */}
         <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
           {article.title}
         </h1>
 
-        {/* Дата */}
         <div
           className="flex items-center gap-3 mb-8 pb-8"
           style={{ borderBottom: "2px solid #e8f4fe" }}
@@ -84,7 +80,6 @@ export default async function ArticlePage({ params }: Props) {
           </p>
         </div>
 
-        {/* Фото */}
         {imageSrc && (
           <div
             className="mb-8 rounded-2xl overflow-hidden"
@@ -100,14 +95,12 @@ export default async function ArticlePage({ params }: Props) {
           </div>
         )}
 
-        {/* Excerpt — оригінальний стиль */}
         {article.excerpt && (
           <p className="text-lg text-gray-600 font-medium mb-8 border-l-4 border-[#e65e92] pl-5 bg-[#fdf0f5] py-4 pr-4 rounded-r-lg">
             {article.excerpt}
           </p>
         )}
 
-        {/* Контент */}
         <div className="prose prose-lg max-w-none">
           <RichTextRenderer content={article.content} />
         </div>
@@ -117,10 +110,10 @@ export default async function ArticlePage({ params }: Props) {
       <div style={{ background: "#FF7AAD" }}>
         <div className="max-w-4xl mx-auto px-8 py-3">
           <Link
-            href="/news"
-            className="inline-flex items-center gap-2 text-xl font-bold text-white transition-opacity hover: w-fit"
-          >
-            ← Повернутись до новин
+              href="/news"
+              className="flex items-center justify-center gap-2 text-xl font-bold text-white transition-opacity hover:opacity-80 w-full"
+            >
+              Повернутись до новин
           </Link>
         </div>
       </div>
