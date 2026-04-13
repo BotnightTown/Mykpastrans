@@ -14,7 +14,6 @@ export default async function VacanciesPage() {
 
   return (
     <main>
-      {/* Заголовок — без змін */}
       <section className="bg-[#f4f4f4] px-[5%] py-12 border-b border-[#dddddd]">
         <div className="max-w-6xl mx-auto">
           <SectionTitle title="Вакансії" />
