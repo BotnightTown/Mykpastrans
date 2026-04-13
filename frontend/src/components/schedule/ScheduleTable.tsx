@@ -38,7 +38,7 @@ export default function ScheduleTable({
     <div>
       {directionData && (
         <div className="mb-5 text-center">
-          <span className="text-3xl md:text-4xl font-black text-[#e65e92] tracking-tight drop-shadow-xs">
+          <span className="text-3xl md:text-4xl font-black text-(--accent-pink) tracking-tight drop-shadow-xs">
             {directionData.endpoint_name}
           </span>
         </div>
@@ -47,7 +47,7 @@ export default function ScheduleTable({
       <div className="overflow-hidden rounded-lg border-2 border-[#378ADD] shadow-md">
         <table className="w-full table-auto border-collapse">
           <thead>
-            <tr className="bg-[#0E95F7]">
+            <tr className="bg-(--primary-blue)">
               <th className="px-4 py-3 text-left text-base md:text-lg font-bold text-white tracking-wide uppercase">
                 №
               </th>
@@ -81,7 +81,7 @@ export default function ScheduleTable({
                     i % 2 === 0 ? "bg-white" : "bg-[#f0f7ff]"
                   } hover:bg-[#dceefb]`}
                 >
-                  <td className="px-4 py-3 text-base md:text-lg text-[#185FA5] font-semibold">
+                  <td className="px-4 py-3 text-base md:text-lg text-(--primary-blue) font-semibold">
                     {i + 1}
                   </td>
                   <td className="px-4 py-3 text-base md:text-lg font-bold text-[#1a1a2e]">
