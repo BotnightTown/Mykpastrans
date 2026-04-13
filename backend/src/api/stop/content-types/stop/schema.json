@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stops",
+  "info": {
+    "singularName": "stop",
+    "pluralName": "stops",
+    "displayName": "stop"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "route_stops": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::route-stop.route-stop",
+      "mappedBy": "stop"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_schedule_bus_trips",
+  "info": {
+    "displayName": "bus.trip"
+  },
+  "options": {},
+  "attributes": {
+    "time": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "is_short": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}
