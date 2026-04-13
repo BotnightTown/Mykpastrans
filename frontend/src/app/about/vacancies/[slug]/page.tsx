@@ -34,21 +34,19 @@ export default async function VacancyPage({ params }: Props) {
   return (
     <div className="w-full min-h-screen bg-white">
 
-      {/* Верхня рожева смуга */}
       <div style={{ background: "#FF7AAD" }}>
         <div className="max-w-4xl mx-auto px-8 py-3">
           <Link
             href="/about/vacancies"
             className="flex items-center justify-center gap-2 text-[17px] font-extrabold text-white transition-opacity hover:opacity-80 w-full"
           >
-            ← Всі вакансії
+            Всі вакансії
           </Link>
         </div>
       </div>
 
       <article className="max-w-4xl mx-auto px-8 py-12">
 
-        {/* Бейдж */}
         <span
           className="inline-block text-white text-[11px] font-extrabold uppercase tracking-[0.1em] px-4 py-1.5 rounded-lg mb-5"
           style={{ background: "#0E95F7" }}
@@ -56,12 +54,10 @@ export default async function VacancyPage({ params }: Props) {
           Вакансія
         </span>
 
-        {/* Заголовок */}
         <h1 className="text-[34px] md:text-[40px] font-black text-gray-900 mb-5 leading-tight">
           {vacancy.title}
         </h1>
 
-        {/* Дата */}
         <div
           className="flex items-center gap-3 mb-10 pb-7"
           style={{ borderBottom: "2px solid #fde8f1" }}
@@ -75,12 +71,10 @@ export default async function VacancyPage({ params }: Props) {
           </p>
         </div>
 
-        {/* Опис */}
         <div className="prose prose-lg max-w-none text-[16px] leading-relaxed text-gray-700">
           <RichTextRenderer content={vacancy.description} />
         </div>
 
-        {/* Контактний блок */}
         {vacancy.contactNumber && (
           <div
             className="mt-14 p-8 rounded-2xl flex flex-col gap-4"
@@ -113,14 +107,13 @@ export default async function VacancyPage({ params }: Props) {
         )}
       </article>
 
-      {/* Нижня рожева смуга */}
       <div style={{ background: "#FF7AAD" }}>
         <div className="max-w-4xl mx-auto px-8 py-3">
           <Link
             href="/about/vacancies"
             className="flex items-center justify-center gap-2 text-[17px] font-extrabold text-white transition-opacity hover:opacity-80 w-full"
           >
-            ← Всі вакансії
+            Всі вакансії
           </Link>
         </div>
       </div>
