@@ -5,6 +5,7 @@ import NewsCard from "@/components/NewsCard";
 import { getArticles, getCategories } from "@/services/news.service";
 import { StrapiArticle, StrapiPagination } from "@/types/news.types";
 import { formatDate } from "@/utils/date";
+import { NewsGridSkeleton } from "@/components/skeletons";
 
 export default function NewsPage() {
   const [articles, setArticles] = useState<StrapiArticle[]>([]);
@@ -177,22 +178,7 @@ export default function NewsPage() {
         )}
 
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl animate-pulse overflow-hidden border-2 border-[#fde8f2]"
-              >
-                <div className="w-full h-52 bg-[#fde8f2]" />
-                <div className="p-6 flex flex-col gap-3">
-                  <div className="h-3 rounded-full w-1/3 bg-[#fde8f2]" />
-                  <div className="h-5 rounded-full w-3/4 bg-[#fde8f2]" />
-                  <div className="h-4 rounded-full w-full bg-[#fde8f2]" />
-                  <div className="h-4 rounded-full w-2/3 bg-[#fde8f2]" />
-                </div>
-              </div>
-            ))}
-          </div>
+          <NewsGridSkeleton />
         ) : articles.length === 0 ? (
           <div className="text-center py-24 flex flex-col items-center gap-4">
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[#fff0f6]">
