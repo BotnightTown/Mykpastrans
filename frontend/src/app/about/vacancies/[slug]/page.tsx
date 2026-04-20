@@ -45,7 +45,7 @@ export default async function VacancyPage({ params }: Props) {
       </div>
 
       <article className="max-w-4xl mx-auto px-8 py-12">
-        <span className="inline-block text-white text-[11px] font-extrabold uppercase tracking-[0.1em] px-4 py-1.5 rounded-lg mb-5 bg-(--primary-blue)">
+        <span className="inline-block text-white text-[11px] font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-lg mb-5 bg-(--primary-blue)">
           Вакансія
         </span>
 
@@ -54,7 +54,7 @@ export default async function VacancyPage({ params }: Props) {
         </h1>
 
         <div className="flex items-center gap-3 mb-10 pb-7 border-b-2 border-[#fde8f1]">
-          <div className="w-1 h-6 rounded-full flex-shrink-0 bg-(--accent-pink)" />
+          <div className="w-1 h-6 rounded-full shrink-0 bg-(--accent-pink)" />
           <p className="text-gray-400 text-[14px] font-semibold">
             {formatDate(vacancy.timePublishedAt ?? vacancy.publishedAt)}
           </p>
@@ -73,7 +73,7 @@ export default async function VacancyPage({ params }: Props) {
               href={`tel:${vacancy.contactNumber}`}
               className="inline-flex items-center gap-4 transition-opacity hover:opacity-70"
             >
-              <span className="flex items-center justify-center w-12 h-12 rounded-full flex-shrink-0 bg-(--accent-pink)">
+              <span className="flex items-center justify-center w-12 h-12 rounded-full shrink-0 bg-(--accent-pink)">
                 <FaPhone className="text-white text-[18px]" />
               </span>
               <span className="text-[22px] font-black text-(--accent-pink)">
