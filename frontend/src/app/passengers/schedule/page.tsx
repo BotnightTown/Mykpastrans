@@ -5,6 +5,7 @@ import RouteSidebar from "@/components/schedule/RouteSidebar";
 import ScheduleTable from "@/components/schedule/ScheduleTable";
 import Filters from "@/components/schedule/Filters";
 import DirectionSwitch from "@/components/schedule/DirectionSwitch";
+import { SchedulePageSkeleton } from "@/components/skeletons";
 import { formatCurrentDate, isWeekend } from "@/utils/date";
 import { getRoutes } from "@/services/schedule.service";
 import { Route } from "@/types/schedule.types";
@@ -37,7 +38,7 @@ export default function SchedulePage() {
   };
 
   if (!selectedRoute)
-    return <div className="text-center mt-20 text-lg">Завантаження...</div>;
+    return <SchedulePageSkeleton />;
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-white">
