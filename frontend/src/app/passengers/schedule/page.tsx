@@ -50,14 +50,16 @@ export default function SchedulePage() {
         />
       </div>
 
-      <div className="flex-1 p-4 md:p-6 flex flex-col gap-3">
+      <div className="flex-1 p-3 sm:p-4 md:p-6 flex flex-col gap-3">
 
         <div className="text-left">
-          <h1 className="text-3xl md:text-4xl font-black mb-1 text-[#e65e92]">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-1 text-[#e65e92] leading-tight">
             Маршрут №{selectedRoute}{" "}
-            {routes.find((r) => r.number === selectedRoute)?.title}
+            <span className="text-xl sm:text-2xl md:text-3xl">
+              {routes.find((r) => r.number === selectedRoute)?.title}
+            </span>
           </h1>
-          <p className="text-gray-500 text-sm md:text-base">
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base">
             {currentDate} · {dayFilter} · Діє з 26.02.2026
           </p>
         </div>

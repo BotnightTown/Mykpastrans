@@ -107,16 +107,15 @@ export default async function ArticlePage({ params }: Props) {
 
       </article>
 
-      <div style={{ background: "#FF7AAD" }}>
-        <div className="max-w-4xl mx-auto px-8 py-3">
-          <Link
-              href="/news"
-              className="flex items-center justify-center gap-2 text-xl font-bold text-white transition-opacity hover:opacity-80 w-full"
-            >
-              Повернутись до новин
-          </Link>
+      <Link 
+        href="/news" 
+        className="block w-full transition-opacity hover:opacity-90" 
+        style={{ background: "#FF7AAD" }}
+      >
+        <div className="max-w-4xl mx-auto px-8 py-3 flex items-center justify-center gap-2 text-xl font-bold text-white">
+          Повернутись до новин
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
