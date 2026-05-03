@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "routes",
+  "info": {
+    "singularName": "route",
+    "pluralName": "routes",
+    "displayName": "Route"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "schedule": {
+      "type": "component",
+      "component": "schedule.bus-direction",
+      "repeatable": true
+    },
+    "intervalTime": {
+      "type": "string"
+    },
+    "stops": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::route-stop.route-stop",
+      "mappedBy": "route"
+    }
+  }
+}
