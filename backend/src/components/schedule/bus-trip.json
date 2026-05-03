@@ -12,7 +12,8 @@
       "type": "string"
     },
     "is_short": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   },
   "config": {}

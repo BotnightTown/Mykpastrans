@@ -32,7 +32,7 @@ describe("Smoke: RouteShortInfo", () => {
     expect(screen.getByText("Намив – Залізничний вокзал")).toBeInTheDocument();
 
     expect(
-      screen.getByRole("button", { name: "Показати" }),
+      screen.getByRole("link", { name: "Детальніше" }),
     ).toBeInTheDocument();
   });
 });

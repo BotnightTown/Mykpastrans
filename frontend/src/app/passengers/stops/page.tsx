@@ -122,92 +122,12 @@ export default function StopsPage() {
                     selectedRoute === route.number ? "" : route.number,
                   )
                 }
-                className={`rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer py-[7px] px-[14px] ${selectedRoute === route.number ? "bg-(--primary-blue) text-white border-2 border-(--primary-blue)" : "bg-[#f8fbff] text-(--primary-blue) border-2 border-[#dceefb]"}`}
+                className={`rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer py-1.75 px-3.5 ${selectedRoute === route.number ? "bg-(--primary-blue) text-white border-2 border-(--primary-blue)" : "bg-[#f8fbff] text-(--primary-blue) border-2 border-[#dceefb]"}`}
               >
                 №{route.number}
               </button>
             ))}
           </div>
-
-          {/* <div className="flex gap-2 sm:ml-auto">
-            <button
-              onClick={() => setSelectedDirection("")}
-              className="rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer"
-              style={{
-                paddingTop: "7px",
-                paddingBottom: "7px",
-                paddingLeft: "14px",
-                paddingRight: "14px",
-                ...(selectedDirection === ""
-                  ? {
-                      background: "#0E95F7",
-                      color: "#ffffff",
-                      border: "2px solid #0E95F7",
-                    }
-                  : {
-                      background: "#f8fbff",
-                      color: "#0E95F7",
-                      border: "2px solid #dceefb",
-                    }),
-              }}
-            >
-              Обидва
-            </button>
-            <button
-              onClick={() =>
-                setSelectedDirection(
-                  selectedDirection === "forward" ? "" : "forward",
-                )
-              }
-              className="rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer"
-              style={{
-                paddingTop: "7px",
-                paddingBottom: "7px",
-                paddingLeft: "14px",
-                paddingRight: "14px",
-                ...(selectedDirection === "forward"
-                  ? {
-                      background: "#0E95F7",
-                      color: "#ffffff",
-                      border: "2px solid #0E95F7",
-                    }
-                  : {
-                      background: "#f8fbff",
-                      color: "#0E95F7",
-                      border: "2px solid #dceefb",
-                    }),
-              }}
-            >
-              Туди
-            </button>
-            <button
-              onClick={() =>
-                setSelectedDirection(
-                  selectedDirection === "backward" ? "" : "backward",
-                )
-              }
-              className="rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer"
-              style={{
-                paddingTop: "7px",
-                paddingBottom: "7px",
-                paddingLeft: "14px",
-                paddingRight: "14px",
-                ...(selectedDirection === "backward"
-                  ? {
-                      background: "#FF7AAD",
-                      color: "#ffffff",
-                      border: "2px solid #FF7AAD",
-                    }
-                  : {
-                      background: "#fff8fb",
-                      color: "#FF7AAD",
-                      border: "2px solid #fde8f2",
-                    }),
-              }}
-            >
-              Назад
-            </button>
-          </div> */}
         </div>
 
         {loading ? (
