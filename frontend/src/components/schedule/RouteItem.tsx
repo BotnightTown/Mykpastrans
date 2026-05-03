@@ -8,8 +8,10 @@ export default function RouteItem({ routeNumber, isSelected, onClick }: Props) {
   return (
     <button
       onClick={onClick}
-      className={`p-3 rounded-lg font-bold transition-all ${
-        isSelected ? 'bg-blue-500 text-white' : 'bg-white hover:bg-gray-200'
+      className={`w-full py-3 px-2 rounded-xl font-bold text-lg transition-all ${
+        isSelected
+          ? "bg-blue-500 text-white shadow-md"
+          : "bg-white hover:bg-gray-200 border border-gray-100"
       }`}
     >
       {routeNumber}
