@@ -23,3 +23,13 @@ export function formatDate(dateString: string): string {
     year: "numeric",
   });
 }
+
+export function formatShortDate(dateString: string): string {
+  const date = new Date(dateString);
+
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
+
+  return date.toLocaleDateString("uk-UA");
+}

@@ -11,14 +11,15 @@ export default function ShortInfo() {
   useEffect(() => {
     async function fetchData() {
       const data = await getRoutes();
-      console.log("Fetched routes:", data);
       setRoutes(data);
     }
     fetchData();
   }, []);
-  const sortedRoutes = [...routes].sort((a, b) =>
-    a.number.localeCompare(b.number, undefined, { numeric: true }),
-  );
+  const sortedRoutes = routes
+    .filter((route) => route.isActive !== false)
+    .sort((a, b) =>
+      a.number.localeCompare(b.number, undefined, { numeric: true }),
+    );
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
       <ul className="w-full text-lg list-none p-0 m-0">

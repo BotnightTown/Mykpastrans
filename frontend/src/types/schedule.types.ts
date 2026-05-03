@@ -18,5 +18,8 @@ export interface Route {
   number: string;
   title: string;
   intervalTime: string;
+  isActive?: boolean;
+  lastChange?: string | null;
+  updatedAt?: string;
   schedule: BusDirection[];
 }

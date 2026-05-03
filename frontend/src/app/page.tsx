@@ -1,6 +1,5 @@
 import Carousel from "@/components/Carousel";
 import NewsCard from "@/components/NewsCard";
-import RouteShortInfo from "@/components/ui/RouteShortInfo";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Link from "next/link";
 import { getArticles } from "@/services/news.service";
@@ -65,48 +64,6 @@ export default async function Home() {
       <div className="w-full h-max flex flex-col items-center gap-24 px-8 py-24">
         <section className="max-w-6xl w-full flex flex-col gap-8">
           <SectionTitle title="Наші маршрути" />
-          {/* <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
-            <ul className="w-full text-lg list-none p-0 m-0">
-              <li className="hidden md:flex bg-gray-50 font-bold uppercase text-xs tracking-wider text-gray-500">
-                <div className="w-1/6 p-4 border-b-2 border-(--primary-blue)">
-                  Маршрут
-                </div>
-                <div className="w-2/6 p-4 border-b-2 border-(--primary-blue)">
-                  Напрямок
-                </div>
-                <div className="w-2/6 p-4 border-b-2 border-(--primary-blue)">
-                  Інтервал руху
-                </div>
-                <div className="w-1/6 p-4 border-b-2 border-(--primary-blue) text-right">
-                  Розклад
-                </div>
-              </li>
-              <RouteShortInfo
-                routeNumber="1"
-                routeName="Тернівка — «Океан»"
-                intervalTime="10–15 хв"
-                href="#"
-              />
-              <RouteShortInfo
-                routeNumber="79"
-                routeName="Варварівка — ВТФ «ВЕЛАМ»"
-                intervalTime="10-15 хв"
-                href="#"
-              />
-              <RouteShortInfo
-                routeNumber="81"
-                routeName="Намив — Ракетне Урочище"
-                intervalTime="20-30 хв"
-                href="#"
-              />
-              <RouteShortInfo
-                routeNumber="91"
-                routeName="Балабанівка — Центральний стадіон"
-                intervalTime="20-30 хв"
-                href="#"
-              />
-            </ul>
-          </div> */}
           <ShortInfo />
         </section>
 
