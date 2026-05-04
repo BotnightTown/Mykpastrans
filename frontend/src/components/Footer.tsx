@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+const PROZORRO_TENDERS_URL =
+  "https://prozorro.gov.ua/uk/search/tender?text=%D0%9C%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D1%97%D0%B2%D0%BF%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%BD%D1%81";
+
 export default function Footer() {
   return (
     <footer className="bg-[#1a1a1a] text-white p-[4rem_5%_2rem]">
@@ -19,12 +22,12 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2">
             <li>
-              <a
+              <Link
                 href="/about/history"
                 className="text-[#aaa] text-sm hover:text-white transition-colors"
               >
                 Про нас
-              </a>
+              </Link>
             </li>
             <li>
               <Link
@@ -44,11 +47,21 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="about/vacancies"
+                href={PROZORRO_TENDERS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#aaa] text-sm hover:text-white transition-colors"
+              >
+                Тендери
+              </a>
+            </li>
+            <li>
+              <Link
+                href="/about/vacancies"
                 className="text-[#aaa] text-sm hover:text-white transition-colors"
               >
                 Вакансії
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -58,12 +71,12 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2">
             <li>
-              <a
+              <Link
                 href="/contacts"
                 className="text-[#aaa] text-sm hover:text-white transition-colors"
               >
                 Контакти
-              </a>
+              </Link>
             </li>
             <li>
               <a

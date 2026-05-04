@@ -5,6 +5,7 @@ import { getRouteStops, getRoutes } from "@/services/stops.service";
 import { StrapiRouteStop } from "@/types/stops.types";
 import { FaChevronDown } from "react-icons/fa6";
 import SectionTitle from "@/components/ui/SectionTitle";
+import { StopsGroupsSkeleton } from "@/components/skeletons";
 
 interface Route {
   id: number;
@@ -16,9 +17,7 @@ export default function StopsPage() {
   const [routeStops, setRouteStops] = useState<StrapiRouteStop[]>([]);
   const [routes, setRoutes] = useState<Route[]>([]);
   const [selectedRoute, setSelectedRoute] = useState<string>("");
-  const [selectedDirection, setSelectedDirection] = useState<
-    "" | "forward" | "backward"
-  >("");
+  const [selectedDirection] = useState<"" | "forward" | "backward">("");
   const [loading, setLoading] = useState(true);
   const [openGroups, setOpenGroups] = useState<Set<string>>(new Set());
 
@@ -60,7 +59,11 @@ export default function StopsPage() {
   const toggleGroup = (key: string) => {
     setOpenGroups((prev) => {
       const next = new Set(prev);
-      next.has(key) ? next.delete(key) : next.add(key);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
       return next;
     });
   };
@@ -119,113 +122,16 @@ export default function StopsPage() {
                     selectedRoute === route.number ? "" : route.number,
                   )
                 }
-                className={`rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer py-[7px] px-[14px] ${selectedRoute === route.number ? "bg-(--primary-blue) text-white border-2 border-(--primary-blue)" : "bg-[#f8fbff] text-(--primary-blue) border-2 border-[#dceefb]"}`}
+                className={`rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer py-1.75 px-3.5 ${selectedRoute === route.number ? "bg-(--primary-blue) text-white border-2 border-(--primary-blue)" : "bg-[#f8fbff] text-(--primary-blue) border-2 border-[#dceefb]"}`}
               >
                 №{route.number}
               </button>
             ))}
           </div>
-
-          {/* <div className="flex gap-2 sm:ml-auto">
-            <button
-              onClick={() => setSelectedDirection("")}
-              className="rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer"
-              style={{
-                paddingTop: "7px",
-                paddingBottom: "7px",
-                paddingLeft: "14px",
-                paddingRight: "14px",
-                ...(selectedDirection === ""
-                  ? {
-                      background: "#0E95F7",
-                      color: "#ffffff",
-                      border: "2px solid #0E95F7",
-                    }
-                  : {
-                      background: "#f8fbff",
-                      color: "#0E95F7",
-                      border: "2px solid #dceefb",
-                    }),
-              }}
-            >
-              Обидва
-            </button>
-            <button
-              onClick={() =>
-                setSelectedDirection(
-                  selectedDirection === "forward" ? "" : "forward",
-                )
-              }
-              className="rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer"
-              style={{
-                paddingTop: "7px",
-                paddingBottom: "7px",
-                paddingLeft: "14px",
-                paddingRight: "14px",
-                ...(selectedDirection === "forward"
-                  ? {
-                      background: "#0E95F7",
-                      color: "#ffffff",
-                      border: "2px solid #0E95F7",
-                    }
-                  : {
-                      background: "#f8fbff",
-                      color: "#0E95F7",
-                      border: "2px solid #dceefb",
-                    }),
-              }}
-            >
-              Туди
-            </button>
-            <button
-              onClick={() =>
-                setSelectedDirection(
-                  selectedDirection === "backward" ? "" : "backward",
-                )
-              }
-              className="rounded-lg text-sm font-semibold transition-all hover:opacity-90 cursor-pointer"
-              style={{
-                paddingTop: "7px",
-                paddingBottom: "7px",
-                paddingLeft: "14px",
-                paddingRight: "14px",
-                ...(selectedDirection === "backward"
-                  ? {
-                      background: "#FF7AAD",
-                      color: "#ffffff",
-                      border: "2px solid #FF7AAD",
-                    }
-                  : {
-                      background: "#fff8fb",
-                      color: "#FF7AAD",
-                      border: "2px solid #fde8f2",
-                    }),
-              }}
-            >
-              Назад
-            </button>
-          </div> */}
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl animate-pulse overflow-hidden border-2 border-[#e8f4fe]"
-              >
-                <div className="p-4 flex flex-col gap-3">
-                  <div className="h-5 rounded-full w-1/3 bg-[#e8f4fe]" />
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <div
-                      key={j}
-                      className="h-3.5 rounded-full w-full bg-[#f0f8ff]"
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <StopsGroupsSkeleton />
         ) : groupedList.length === 0 ? (
           <div className="text-center py-24">
             <p className="text-gray-400 text-xl">Зупинок не знайдено</p>

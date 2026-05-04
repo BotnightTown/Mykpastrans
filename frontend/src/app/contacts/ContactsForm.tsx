@@ -79,11 +79,11 @@ export function ContactsForm() {
   return (
     <div id="feedback">
       {/* Підзаголовок — без змін */}
-      <h2 className="text-2xl font-black uppercase border-b-2 border-(--accent-pink) inline-block mb-8">
+      <h2 className="text-xl sm:text-2xl font-black uppercase border-b-2 border-(--accent-pink) inline-block mb-5 md:mb-8">
         Написати звернення
       </h2>
 
-      <form className="space-y-4">
+      <form className="space-y-3 md:space-y-4">
 
         <div>
           <label className="block mb-1.5 font-semibold text-sm text-gray-700">
@@ -171,7 +171,7 @@ export function ContactsForm() {
           <textarea
             id="description"
             name="description"
-            rows={5}
+            rows={4}
             placeholder="Опишіть вашу ситуацію..."
             required
             value={description}

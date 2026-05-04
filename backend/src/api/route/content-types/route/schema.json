@@ -30,6 +30,13 @@
       "relation": "oneToMany",
       "target": "api::route-stop.route-stop",
       "mappedBy": "route"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "lastChange": {
+      "type": "date"
     }
   }
 }

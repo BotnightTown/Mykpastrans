@@ -1,0 +1,12 @@
+export { default as NewsGridSkeleton } from "./NewsGridSkeleton";
+export { default as StopsGroupsSkeleton } from "./StopsGroupsSkeleton";
+export { default as ContactsPageSkeleton } from "./ContactsPageSkeleton";
+export { default as HistoryPageSkeleton } from "./HistoryPageSkeleton";
+export { default as RollingStockPageSkeleton } from "./RollingStockPageSkeleton";
+export { default as PaymentPageSkeleton } from "./PaymentPageSkeleton";
+export { default as VacanciesPageSkeleton } from "./VacanciesPageSkeleton";
+export { default as VacancyPageSkeleton } from "./VacancyPageSkeleton";
+export { default as SchedulePageSkeleton } from "./SchedulePageSkeleton";
+export { default as ScheduleTableSkeleton } from "./ScheduleTableSkeleton";
+export { default as NewsPageSkeleton } from "./NewsPageSkeleton";
+export { default as ArticlePageSkeleton } from "./ArticlePageSkeleton";

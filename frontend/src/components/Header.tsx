@@ -6,6 +6,9 @@ import HeaderLink from "./ui/HeaderLink";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 
+const PROZORRO_TENDERS_URL =
+  "https://prozorro.gov.ua/uk/search/tender?text=%D0%9C%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D1%97%D0%B2%D0%BF%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%BD%D1%81";
+
 function HeaderDesktop() {
   return (
     <header className="bg-white border-b-4 border-(--primary-blue) sticky top-0 z-50 py-3 md:py-4 px-4 md:px-[5%]">
@@ -40,6 +43,7 @@ function HeaderDesktop() {
                 { href: "/about/history", title: "Історія підприємства" },
                 { href: "/about/rolling-stock", title: "Рухомий склад" },
                 { href: "/about/vacancies", title: "Вакансії" },
+                { href: PROZORRO_TENDERS_URL, title: "Тендери" },
               ]}
             />
             <HeaderLink href="/contacts" title="Контакти" />
@@ -133,6 +137,14 @@ function HeaderMobile() {
               >
                 Вакансії
               </Link>
+              <a
+                href={PROZORRO_TENDERS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="pl-4 text-sm hover:bg-gray-100"
+              >
+                Тендери
+              </a>
             </div>
           </div>
 
